@@ -92,6 +92,7 @@ const TreatsBar = ({text,expand}) => {
     const removeImage = (id) => {
         setPics((oldState) => oldState.filter((item) => item.id !== id));
       };
+
       useEffect(() => {
         //fake fetch data
         setPics(allImages);
