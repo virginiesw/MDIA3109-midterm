@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import close from '../../img/close.png';
 
 const Container = styled.div`
-display: flex;
-align-items: center;
-flex-direction: column-reverse;
+// display: flex;
+// align-items: center;
+// flex-direction: column-reverse;
 position: relative;
+margin-right: 30px;
 `;
 
 const AddButton = styled.div`
 min-width: 311px;
-max-width: 311px;
+max-width: 500px;
 padding: 0.2%;
 min-height: 50px;
 max-height: 100px;
@@ -19,6 +20,7 @@ background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' 
 display: flex;
 align-items: center;
 justify-content: center;
+// background-color: white;
 `;
 
 const TextLine = styled.div`
@@ -29,14 +31,17 @@ margin-top: -5px;
 margin-bottom: -5px;
 `;
 
-const MenuText = styled.div``;
+const MenuText = styled.div`
+font-size: 22px;
+`;
 
 const AddMenu = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: space-around;
-min-height: 300px;
+min-height: 235px;
+max-height: 235px;
 min-width: 367px;
 max-width: 400px;
 border: 1px solid black;
@@ -45,6 +50,7 @@ box-shadow: 0px -2px 5px #565656;
 padding-top: 20px;
 padding-bottom: 20px;
 position: relative;
+background-color: white;
 `;
 
 const CloseIcon = styled.img`
@@ -56,7 +62,11 @@ margin: 10px;
 
 const IconCont = styled.div`
 z-index: 10;
+position: absolute;
+bottom: -10px;
+margin-left: -30px;
 `;
+
 
 class AddItem extends React.Component {
 
@@ -81,7 +91,7 @@ class AddItem extends React.Component {
                             <TextLine></TextLine>
                             <MenuText onClick={HandleSnack}>Treats</MenuText>
                         </AddMenu>  
-                        </IconCont>
+                    </IconCont>
                     : null
                 }      
         </Container>  

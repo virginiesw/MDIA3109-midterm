@@ -3,15 +3,18 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     display: flex;
-    width: 100%;
-    height: 200px;
+    min-width: 367px;
+    max-width: 500px;
+    min-height: 168px;
+    max-height: 300px;
     border-radius: 15px;
     border: 1px solid black;
+    margin-top: 50px;
+    background-color: white;
 `;
 
 const Center = styled.div`
     width: 100%;
-    font-size: 20pt;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,11 +24,13 @@ const Options = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    align-items: center;
 `;
 
 const Title = styled.div`
     margin-top: 5px;
+    font-size: 24px;
+    margin-bottom: 20px;
 `;
 
 const Close = styled.img`
@@ -42,24 +47,29 @@ const HR = styled.hr`
     border: 1px solid black;
 `;
 
-const Modal = ({most, least}) => {
+const TextCont = styled.div`
+font-size: 20px;
+`;
+
+const Modal = ({most, least, handleClose}) => {
 
     return <Container>
-        <Close src="/X.svg" onClick=""/>
+        <Close src="/X.svg" onClick={handleClose}/>
         <Center>
             <Title>Filter By:</Title>
             <Options>
-                <div onClick={most}>Most Completed</div>
+                <TextCont onClick={most}>Most Completed</TextCont>
                 <HR/>
-                <div onClick={least}>Least Completed</div>
+                <TextCont onClick={least}>Least Completed</TextCont>
             </Options>
         </Center>
     </Container>
 }
 
 Modal.defaultProps = {
-    most: "",
-    least: ""
+    most:()=>{},
+    least:()=>{},
+    handleClose:()=>{}
 }
     
 export default Modal;
