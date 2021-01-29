@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import close from '../../img/close.png';
 
 const Container = styled.div`
 display: flex;
+align-items: center;
 flex-direction: column-reverse;
-justify-content: center;
+position: relative;
 `;
 
 const AddButton = styled.div`
-min-width: 50px;
-max-width: 200px;
+min-width: 311px;
+max-width: 311px;
 padding: 0.2%;
 min-height: 50px;
 max-height: 100px;
@@ -20,9 +22,11 @@ justify-content: center;
 `;
 
 const TextLine = styled.div`
-height: 1px;
+height: 2px;
 width: 70%;
 background-color: black;
+margin-top: -5px;
+margin-bottom: -5px;
 `;
 
 const MenuText = styled.div``;
@@ -33,68 +37,62 @@ flex-direction: column;
 align-items: center;
 justify-content: space-around;
 min-height: 300px;
-min-width: 50px;
-max-width:200px;
+min-width: 367px;
+max-width: 400px;
 border: 1px solid black;
 border-radius: 10px;
 box-shadow: 0px -2px 5px #565656;
+padding-top: 20px;
+padding-bottom: 20px;
+position: relative;
 `;
 
-// const AddItem = ({HandleAdd}) => {
+const CloseIcon = styled.img`
+position: absolute;
+top: 0;
+left: 0;
+margin: 10px;
+`;
 
-   
-        
-
-//     return <Container id="results" className="search-results">
-//              <AddButton onClick={HandleAdd}>
-//             Add Item +
-//         </AddButton>
-//         <AddMenu>
-//                 <MenuText>Breakfast</MenuText>
-//                 <TextLine></TextLine>
-//                 <MenuText>Lunch</MenuText>
-//                 <TextLine></TextLine>
-//                 <MenuText>Dinner</MenuText>
-//                 <TextLine></TextLine>
-//                 <MenuText>Treats</MenuText>
-//             </AddMenu>  
-//     </Container>
-// }
-
-// AddItem.defaultProps = {
-//     HandleAdd:()=>{},
-// }
-
-// export default AddItem;
+const IconCont = styled.div`
+z-index: 10;
+`;
 
 class AddItem extends React.Component {
 
     state = { showing: false };
 
     render() {
-        const { showing, HandleAdd } = this.state;
-        return (
-            <div>
-                <Container>
-                    <AddButton onClick={HandleAdd} onClick={() => this.setState({ showing: !showing })}>Add Item+</AddButton>
-                </Container>
+        const { showing, HandleMeal, HandleSnack } = this.state;
+        return ( <Container>
+                    <AddButton onClick={() => this.setState({ showing: !showing })}>Add Item+</AddButton>          
                 { showing 
-                    ?    <AddMenu onClick={() => this.setState({ showing: !showing })}>
-                            <MenuText>Breakfast</MenuText>
+                    ?    
+                    <IconCont>
+                            <AddMenu>
+                         
+                                <CloseIcon onClick={() => this.setState({ showing: !showing })} src={close} width="20px"></CloseIcon>
+                
+                            <MenuText onClick={HandleMeal}>Breakfast</MenuText>
                             <TextLine></TextLine>
-                            <MenuText>Lunch</MenuText>
+                            <MenuText onClick={HandleMeal}>Lunch</MenuText>
                             <TextLine></TextLine>
-                            <MenuText>Dinner</MenuText>
+                            <MenuText onClick={HandleMeal}>Dinner</MenuText>
                             <TextLine></TextLine>
-                            <MenuText>Treats</MenuText>
-                </AddMenu>  
+                            <MenuText onClick={HandleSnack}>Treats</MenuText>
+                        </AddMenu>  
+                        </IconCont>
                     : null
-                }
-            </div>  
+                }      
+        </Container>  
         )
-        AddItem.defaultProps = {
-    HandleAdd:()=>{},
+   
+    }    
 }
+
+AddItem.defaultProps = {
+    HandleMeal:()=>{},
+    HandleSnack:()=>{},
     }
-}
+
 export default AddItem;
