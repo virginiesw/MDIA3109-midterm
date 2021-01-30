@@ -111,11 +111,18 @@ const fakedb = [
     }
 ]
 
-const EditProfile = (EditClick, CancelClick, DoneClick, ) => {
+const EditProfile = ({EditClick, CancelClick, DoneClick}) => {
+
+    const [name, setName] = useState("");
+    const [bday, setBday] = useState("");
+    const [weight, setWeight] = useState("");
+
     return <Container>
         <TopBar>
             <Cancel onClick={CancelClick}>Cancel</Cancel>
-            <Done onClick={DoneClick}>Done</Done>
+            <Done onClick={()=>{
+                DoneClick(name, bday, weight)
+            }}>Done</Done>
         </TopBar>
         <Avatar>
             <div>
@@ -130,7 +137,9 @@ const EditProfile = (EditClick, CancelClick, DoneClick, ) => {
             {/* Name info box */}
             <InfoBox>
                 <Title>Name</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.name}></InfoEdit>)}
+                {fakedb.map(o=><InfoEdit placeholder={o.name} type="text" onChange={(e)=>{
+        setName(e.target.value);
+      }}></InfoEdit>)}
             </InfoBox>
 
             <HorizontalRule></HorizontalRule>
@@ -138,7 +147,9 @@ const EditProfile = (EditClick, CancelClick, DoneClick, ) => {
             {/* Weight info box */}
             <InfoBox>
                 <Title>Weight</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.weight}></InfoEdit>)}
+                {fakedb.map(o=><InfoEdit placeholder={o.age} type="text" onChange={(e)=>{
+        setBday(e.target.value);
+      }}></InfoEdit>)}
             </InfoBox>
 
             <HorizontalRule></HorizontalRule>
@@ -146,7 +157,9 @@ const EditProfile = (EditClick, CancelClick, DoneClick, ) => {
             {/* Age info box */}
             <InfoBox>
                 <Title>Age</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.age}></InfoEdit>)}
+                {fakedb.map(o=><InfoEdit placeholder={o.weight} type="text" onChange={(e)=>{
+        setWeight(e.target.value);
+      }}></InfoEdit>)}
             </InfoBox>
 
             <HorizontalRule></HorizontalRule>
