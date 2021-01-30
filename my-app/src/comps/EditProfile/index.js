@@ -105,29 +105,34 @@ const fakedb = [
     {
         id:1,
         name:"Murphy",
-        weight:"95 lbs",
-        age:"3 y 6 m",
-        pic:murphy,
+        weight:"95",
+        year:"3",
+        month:"7",
+        avatar:murphy,
     }
 ]
 
 const EditProfile = ({EditClick, CancelClick, DoneClick}) => {
 
     const [name, setName] = useState("");
-    const [bday, setBday] = useState("");
+    const [year, setYear] = useState("");
+    const [month, setMonth] = useState("");
+    const [avatar, setAvatar] = useState("");
     const [weight, setWeight] = useState("");
 
     return <Container>
         <TopBar>
             <Cancel onClick={CancelClick}>Cancel</Cancel>
             <Done onClick={()=>{
-                DoneClick(name, bday, weight)
+                DoneClick(name, year, month, weight, avatar)
             }}>Done</Done>
         </TopBar>
         <Avatar>
             <div>
                 <ImgCont>  
-                    <Img src={murphy}></Img>
+                    {fakedb.map(o=><Img src={o.avatar} onChange={(e)=>{
+        setAvatar(e.target.value);
+      }}></Img>)}
                 </ImgCont>
               
                 <Edit src={editicon} onClick={EditClick}></Edit>
@@ -147,8 +152,8 @@ const EditProfile = ({EditClick, CancelClick, DoneClick}) => {
             {/* Weight info box */}
             <InfoBox>
                 <Title>Weight</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.age} type="text" onChange={(e)=>{
-        setBday(e.target.value);
+                {fakedb.map(o=><InfoEdit placeholder={o.weight} type="text" onChange={(e)=>{
+        setWeight(e.target.value);
       }}></InfoEdit>)}
             </InfoBox>
 
@@ -156,9 +161,18 @@ const EditProfile = ({EditClick, CancelClick, DoneClick}) => {
 
             {/* Age info box */}
             <InfoBox>
-                <Title>Age</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.weight} type="text" onChange={(e)=>{
-        setWeight(e.target.value);
+                <Title>Year</Title>
+                {fakedb.map(o=><InfoEdit placeholder={o.year} type="text" onChange={(e)=>{
+        setYear(e.target.value);
+      }}></InfoEdit>)}
+            </InfoBox>
+
+            <HorizontalRule></HorizontalRule>
+
+            <InfoBox>
+                <Title>Month</Title>
+                {fakedb.map(o=><InfoEdit placeholder={o.month} type="text" onChange={(e)=>{
+        setMonth(e.target.value);
       }}></InfoEdit>)}
             </InfoBox>
 

@@ -73,7 +73,9 @@ class AddItem extends React.Component {
     state = { showing: false };
 
     render() {
-        const { showing, HandleMeal, HandleSnack } = this.state;
+        const { showing} = this.state;
+        const {handleBreakfast, handleLunch, handleDinner, handleTreat} = this.props;
+
         return ( <Container>
                     <AddButton onClick={() => this.setState({ showing: !showing })}>Add Item+</AddButton>          
                 { showing 
@@ -83,13 +85,13 @@ class AddItem extends React.Component {
                          
                                 <CloseIcon onClick={() => this.setState({ showing: !showing })} src={close} width="20px"></CloseIcon>
                 
-                            <MenuText onClick={HandleMeal}>Breakfast</MenuText>
+                            <MenuText onClick={this.props.handleBreakfast}>Breakfast</MenuText>
                             <TextLine></TextLine>
-                            <MenuText onClick={HandleMeal}>Lunch</MenuText>
+                            <MenuText onClick={this.props.handleLunch}>Lunch</MenuText>
                             <TextLine></TextLine>
-                            <MenuText onClick={HandleMeal}>Dinner</MenuText>
+                            <MenuText onClick={this.props.handleDinner}>Dinner</MenuText>
                             <TextLine></TextLine>
-                            <MenuText onClick={HandleSnack}>Treats</MenuText>
+                            <MenuText onClick={this.props.handleTreat}>Treat</MenuText>
                         </AddMenu>  
                     </IconCont>
                     : null
@@ -97,12 +99,17 @@ class AddItem extends React.Component {
         </Container>  
         )
    
-    }    
+    }   
 }
 
 AddItem.defaultProps = {
-    HandleMeal:()=>{},
-    HandleSnack:()=>{},
+        handleBreakfast:()=>{},
+        handleLunch:()=>{},
+        handleDinner:()=>{},
+        handleTreat:()=>{},
+    // HandleSnack:()=>{},
+    // meal: "dinner",
+
     }
 
 export default AddItem;
