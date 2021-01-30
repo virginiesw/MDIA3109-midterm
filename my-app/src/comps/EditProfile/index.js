@@ -5,8 +5,10 @@ import murphy from './imgs/murphy.png';
 import editicon from './imgs/editIcon.png';
 
 const Container = styled.div`
-    width:100vw;
-    height:100vh;
+    min-width:300px;
+    max-width: 700px;
+    min-height: 896px;
+    max-height: 1000px;
     background-color:#004476;
     margin:0;
 `;
@@ -19,7 +21,7 @@ const TopBar = styled.div`
 const Cancel = styled.text`
     color:white;
     font-weight: bold;
-    font-size: 5vw;
+    font-size: 24px;
     font-family: sans-serif;
     padding:5%;
 `;
@@ -27,7 +29,7 @@ const Cancel = styled.text`
 const Done = styled.text`
     color:#44DDFF;
     font-weight: bold;
-    font-size: 5vw;
+    font-size: 24px;
     
     font-family: sans-serif;
     padding:5%
@@ -39,21 +41,32 @@ const Avatar = styled.div`
     margin-top:5%;
 `;
 
-const Img = styled.img`
+const ImgCont = styled.div`
     display:flex;
-    width:35vw;
-    height:35vw;
+    overflow: hidden;
+    min-height: 131px;
+    min-width: 131px;
+    max-height: 150px;
+    max-width: 150px;
     border-radius: 100%;
-    object-fit:cover;
+    border: 10px solid white;
+    z-index: 10;
+    position: relative;
     border: 6px solid #CCD9DF;
 `;
 
+const Img = styled.img`
+width: 100%;
+height: 100%;
+object-fit: stretch;
+`;
+
 const Edit = styled.img`
-    width:9vw;
-    height:9vw;
+    width:30px;
+    height:30px;
     position:relative;
-    left:33vw;
-    bottom:7vw;
+    left:180px;
+    bottom:40px;
 `;
 
 const Info = styled.div`
@@ -63,13 +76,13 @@ const Info = styled.div`
 const Title = styled.text`
     color:white;
     font-weight: bold;
-    font-size: 5vw;
+    font-size: 20px;
     font-family: sans-serif;
-    padding:5%
+    padding: 10px;
 `;
 
 const InfoBox = styled.div`
-    margin-left:7vw;
+    margin-left:4vw;
     margin-bottom:2vw;
     margin-top:2vw;
     display:flex;
@@ -78,14 +91,14 @@ const InfoBox = styled.div`
 
 const InfoEdit = styled.input`
     position:absolute;
-    left:35vw;
+    left:180px;
     background-color:#CCD9DF;
-    padding:2%;
+    padding:20px;;
     border-radius:5px;
 `;
 
 const HorizontalRule = styled.hr`
-    width:75vw;
+    width:77%;
 `;
 
 const fakedb = [
@@ -106,7 +119,10 @@ const EditProfile = (EditClick, CancelClick, DoneClick, ) => {
         </TopBar>
         <Avatar>
             <div>
-                <Img src={murphy}></Img>
+                <ImgCont>  
+                    <Img src={murphy}></Img>
+                </ImgCont>
+              
                 <Edit src={editicon} onClick={EditClick}></Edit>
             </div>
         </Avatar>
