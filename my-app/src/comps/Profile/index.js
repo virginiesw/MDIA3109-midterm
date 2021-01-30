@@ -1,93 +1,86 @@
 import React from 'react';
 
 import styled from 'styled-components';
-
+import edit from '../../img/edit.png';
+import murphy from '../EditProfile/imgs/murphy.png'
 
 const Container = styled.div`
 display:flex;
-// position:absolute;
-max-height:	274x;
-max-width: 535px;
-border: 1px solid black;
-background-color:#7A7A7A;
+min-height: 274px;
+min-width: 414px;
+max-width: 600px;
 align-items: center;
 justify-content: center;
-align-slef:center;
-.edit{
-    position: absolute;
-        top: 20px;
-        left: 500px;
-        width:10%;  
-        height:10%;
-}
+position: relative;
+color: white;
 `;
 
-const Image = styled.div`
-// display:flex;
-img{
-    width:30%;  
-    height:30%;
- margin:10%;
-} 
 
-`;
-const Icon = styled.div`
-img{
-
-    // position: absolute;
-    align-self:start;
-        // bottom: 150px;
-        // right: -20;
-        height:50%;
-        width:50%;
-}
+const Icon = styled.img`
+position: absolute;
+top: 0;
+right: 0;
+margin: 10px;
 `;
 const InfoCont = styled.div`
-display:flex;
-color:#FFFFF;
-  .cont{
-    align-items: center;
-    justify-content: center;
-    align-slef:center;
-    text-align: center
-  }
+flex: 1;
+display: flex;
+width: 200px;
+justify-content: space-between;
 `;
 const ProfileCont = styled.div`
-position:absolute;
-margin-left:20%;
-top:12%;
-display:flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-align-slef:center;
-color:#FFF;
-
-.name{
-    font-size:36px;
-    font-weight:bold;
-    margin:10%;
-}
-.proptxt{
-    font-size:18px;
-
-}
-.text{
-    font-size:20px;
-
-}
-
-img{
-    height:25%;
-    weight:10%;
-    margin:10px;
-
-
-}
-
 `;
 
+const ImgCont = styled.div`
+    display:flex;
+    overflow: hidden;
+    min-height: 100px;
+    min-width: 100px;
+    max-height: 120px;
+    max-width: 120px;
+    border-radius: 100%;
+    border: 10px solid white;
+    z-index: 10;
+    border: 6px solid #CCD9DF;
+`;
 
+const Img = styled.img`
+width: 100%;
+height: 100%;
+object-fit: stretch;
+`;
+
+const InnerCont = styled.div`
+display: flex;
+width: 100%;
+justify-content: space-around;
+align-items: center;
+`;
+
+const AgeCont = styled.div`
+text-align: center;
+`;
+
+const WeightCont = styled.div`
+text-align: center;
+`;
+
+const NameCont = styled.div`
+font-size: 40px;
+margin-bottom: 15px;
+`;
+
+const LineCont = styled.div`
+height: 55px;
+width: 1px;
+background-color: white;
+`;
+
+const BigCont = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+`;
 
 
 
@@ -95,40 +88,32 @@ const Profile = ({name,avatar,age,weight}) => {
 
     
     return <Container >
-      <Icon>
-           <div className="edit"
-   ><img src="img/edit.png"/></div>
-   </Icon>
-       <Image> 
-        <div><img src={avatar}/></div>
-
-        </Image>
-  
-        <ProfileCont >
-        <div className="name">{name}</div>
-  
-        <InfoCont>
-          <div className="cont">
-          <div className="text">Age</div>
-          <div className="proptxt">{age}</div>
-          </div>
+        <Icon src={edit}></Icon>
+        <InnerCont>
+            <ImgCont>  
+                <Img src={murphy}></Img>
+            </ImgCont>
+            <ProfileCont >
+                <BigCont>
+                    <NameCont>
+                    {name}
+                    </NameCont>
+                    <InfoCont>
+                        <AgeCont>
+                            Age <br/>
+                            {age}
+                        </AgeCont>
+                        <LineCont></LineCont> 
+                        <WeightCont>
+                            Weight <br/>
+                            {weight}
+                        </WeightCont>
+                    </InfoCont>        
+                </BigCont>
      
-          <div className="line"><img src="img/line.png"/></div>
-
-          <div className="cont">
-          <div className="text">Weight</div>
-          <div className="proptxt">{weight}</div>
-          </div>
-          </InfoCont>
-          
-        </ProfileCont>
-    
-          
-
-
-  
+            </ProfileCont>  
+        </InnerCont>
      </Container>
-
 }
 
 
@@ -137,11 +122,6 @@ Profile.defaultProps = {
     avatar:"/img/Murphy.png",
     age:"3 y 6 m",
     weight:"95lbs"
-
-
-    
-  
-
 }
     
 export default Profile;

@@ -1,6 +1,5 @@
 import './App.scss';
 import FilterComp from './comps/FilterComp';
-import './assets/css/fonts.css';
 
 function App() {
   return (
