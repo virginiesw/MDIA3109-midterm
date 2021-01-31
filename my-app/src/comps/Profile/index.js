@@ -84,14 +84,17 @@ align-items: center;
 
 
 
-const Profile = ({name,avatar,age,weight}) => {
+const Profile = ({name,imgurl, year, month,weight, clickHome, hideHome}) => {
+
+
+
 
     
     return <Container >
-        <Icon src={edit}></Icon>
+        <Icon onClick={hideHome}  onClick={clickHome} src={edit}></Icon>
         <InnerCont>
             <ImgCont>  
-                <Img src={murphy}></Img>
+                <Img src={imgurl}></Img>
             </ImgCont>
             <ProfileCont >
                 <BigCont>
@@ -101,12 +104,12 @@ const Profile = ({name,avatar,age,weight}) => {
                     <InfoCont>
                         <AgeCont>
                             Age <br/>
-                            {age}
+                            {year} y {month} m
                         </AgeCont>
                         <LineCont></LineCont> 
                         <WeightCont>
                             Weight <br/>
-                            {weight}
+                            {weight} lbs
                         </WeightCont>
                     </InfoCont>        
                 </BigCont>
@@ -118,10 +121,13 @@ const Profile = ({name,avatar,age,weight}) => {
 
 
 Profile.defaultProps = {
-    name:"Murphy",
-    avatar:"/img/Murphy.png",
-    age:"3 y 6 m",
-    weight:"95lbs"
+    name:"default name",
+    // imgurl: "../../img/murphy.png",
+    year: "x",
+    month: "y",
+    weight:"x",
+    clickHome:()=>{},
+    hideHome:()=>{},
 }
     
 export default Profile;

@@ -19,25 +19,21 @@ align-items: center;
 justify-content: center;
 align-slef:center;
 font-size:24px;
-
 .topcont{
     display:flex;
     margin-bottom:-15px;
-
-    .text{
-     color:${props=>props.expanded ? "#FF9E44":"#FFFFF"};
-    }
+        .text{
+            color:${props=>props.expanded ? "#FF9E44":"#FFFFF"};
+        }
 `;
 
 const TopCont = styled.div`
-
-    display:flex;
-   
-img{
-    position: absolute;
-        top: 18px;
-        left: 20px;
-}
+display:flex;
+    img{
+        position: absolute;
+            top: 18px;
+            left: 20px;
+    }
 `;
 const SliderCont = styled.div`
 
@@ -58,7 +54,6 @@ img{
     width:100%;
     height:100%;
 }
-
 `;
 
 const Slider =styled.div`
@@ -75,9 +70,6 @@ background-color:${props=>props.expanded2 ? "#FF9E44":"#FFFFF"};
 background-color:${props=>props.expanded3 ? "#FF9E44":"#FFFFF"};
 align-item:center;
 align-self:center;
-
-
-
 `;
 
 
@@ -155,16 +147,10 @@ const Indicator = ({text,expand}) => {
 
 Indicator.defaultProps = {
     text:"Dinner",
-
      expanded:true,
      expanded1:true,
      expanded2:true,
      expanded3:true
-     
-
-    
-  
-
 }
     
 export default Indicator;

@@ -8,10 +8,42 @@ height: 896px;
 border: 1px solid #DAD;
 `;
 
-const ProfileEditPage = () =>{
+const fakedb = [
+    {
+        id:1,
+        name:"Murphy",
+        weight:"95 lbs",
+        year:"3",
+        month:"7",
+        avatar:"../../img/murphy.png",
+    }
+]
+
+const ProfileEditPage = ({pageHide}) =>{
+
+
+    const HandleInsert = (name, weight, year, month, avatar) => {
+        console.log(avatar, name, year, month, weight)
+
+
+        //this pushes the current data to the database. 
+        //This will be modified with a post request to our endpoint once the database is set up
+        //for now, use fake database as example, doesn't really work, but it sets the layout
+        var resp = fakedb.push({avatar: avatar, name: name, weight: weight, year:year, month: month})
+        var resptest = fakedb;
+        console.log("data", resptest);
+    }
+
+
+ 
+
     return <Container>
-        <EditProfile />
+        <EditProfile homeClick={pageHide} DoneClick={() => {HandleInsert() ; pageHide()}} />
     </Container>
+}
+
+ProfileEditPage.defaultProps = {
+    pageHide:()=>{},
 }
 
 export default ProfileEditPage;

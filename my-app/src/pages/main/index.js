@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState, Component} from 'react';
 import styled from 'styled-components';
 
 import AddItem from '../../comps/AddItem';
@@ -46,12 +46,38 @@ font-family: 'Roboto', sans-serif;
 
 
 const MainPage = () => {
+
+
+    const treat = [];
+
+
+    const AlertBreakfast= () => {
+        alert("clicked breakfast")
+    }
+    const AlertLunch= () => {
+        alert("clicked lunch")
+    }
+    const AlertDinner= () => {
+        alert("clicked dinner")
+    }
+    const AlertTreat= () => {
+        // alert("clicked treat");
+            treat.push(<div>A</div>);  
+            return treat
+    }
+
+
     return <Container>
         <div className="title">Feeding Schedule</div>
         <div className="dateComp"><DateComp /></div>
         <div className="filterComp"><FilterComp fsizeT="20px" /></div>
-        <div className="addComp"><AddItem /></div>
+        <div>
+            {treat}
+            hello
+        </div>
+        <div className="addComp"><AddItem handleBreakfast={AlertBreakfast} handleLunch={AlertLunch} handleDinner={AlertDinner} handleTreat={AlertTreat}/></div>
     </Container>
 }
+
 
 export default MainPage;
