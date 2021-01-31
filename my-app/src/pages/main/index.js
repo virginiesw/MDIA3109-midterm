@@ -8,6 +8,7 @@ import Profile from '../../comps/Profile';
 import DateComp from '../../comps/DateComp';
 import FilterComp from '../../comps/FilterComp';
 import EditProfile from '../../comps/EditProfile';
+const meals = require("../../mealData.json");
 
 
 const Container = styled.div`
@@ -48,11 +49,48 @@ font-family: 'Roboto', sans-serif;
 const MainPage = () => {
 
 
-    const treat = [];
+    // const [food, setFood] = useState([]);
+
+
+    var foodFilter = meals.filter((o, i)=>{
+        return o.date.includes("01/20/20") //later on include moment, pass that string into this to filter by date
+    })
+
+    
+    var sortMost = foodFilter.sort((a, b)=>{
+        if (a.mComplete > b.mComplete){
+            return 1
+        } else if (a.mComplete < b.mComplete){
+            return -1
+        } else {
+            return 0
+        }
+    })
+
+    // var sortLeast = filter.sort((a, b)=>{
+    //     if (a.mComplete > b.mComplete){
+    //         return -1
+    //     } else if (a.mComplete < b.mComplete){
+    //         return 1
+    //     } else {
+    //         return 0
+    //     }
+    // })
+
+    var food = meals 
+
+    console.log("all entries", food)
+    console.log("all entries in one day", foodFilter)
+    // console.log("most", sortMost)
+    // console.log("least", sortLeast)
+
 
 
     const AlertBreakfast= () => {
-        alert("clicked breakfast")
+        alert("clicked breakfast");
+        // var resp = meals;
+        // setFood(resp);
+        // console.log(food)
     }
     const AlertLunch= () => {
         alert("clicked lunch")
@@ -62,8 +100,9 @@ const MainPage = () => {
     }
     const AlertTreat= () => {
         // alert("clicked treat");
-            treat.push(<div>A</div>);  
-            return treat
+            // treat.push(<div>A</div>);  
+            // return treat
+
     }
 
 
@@ -72,8 +111,9 @@ const MainPage = () => {
         <div className="dateComp"><DateComp /></div>
         <div className="filterComp"><FilterComp fsizeT="20px" /></div>
         <div>
-            {treat}
-            hello
+        {sortMost.map(o=><Indicator  
+             text={o.meal}> {o.meal}
+         </Indicator>)} 
         </div>
         <div className="addComp"><AddItem handleBreakfast={AlertBreakfast} handleLunch={AlertLunch} handleDinner={AlertDinner} handleTreat={AlertTreat}/></div>
     </Container>
