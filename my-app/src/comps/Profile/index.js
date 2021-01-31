@@ -84,11 +84,14 @@ align-items: center;
 
 
 
-const Profile = ({name,imgurl, year, month,weight}) => {
+const Profile = ({name,imgurl, year, month,weight, clickHome, hideHome}) => {
+
+
+
 
     
     return <Container >
-        <Icon src={edit}></Icon>
+        <Icon onClick={hideHome}  onClick={clickHome} src={edit}></Icon>
         <InnerCont>
             <ImgCont>  
                 <Img src={imgurl}></Img>
@@ -122,7 +125,9 @@ Profile.defaultProps = {
     // imgurl: "../../img/murphy.png",
     year: "x",
     month: "y",
-    weight:"x"
+    weight:"x",
+    clickHome:()=>{},
+    hideHome:()=>{},
 }
     
 export default Profile;

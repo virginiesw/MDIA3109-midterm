@@ -112,7 +112,7 @@ const fakedb = [
     }
 ]
 
-const EditProfile = ({EditClick, CancelClick, DoneClick}) => {
+const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
 
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
@@ -122,8 +122,8 @@ const EditProfile = ({EditClick, CancelClick, DoneClick}) => {
 
     return <Container>
         <TopBar>
-            <Cancel onClick={CancelClick}>Cancel</Cancel>
-            <Done onClick={()=>{
+            <Cancel onClick={homeClick}>Cancel</Cancel>
+            <Done onClick={goHomePage} onClick={()=>{
                 DoneClick(name, year, month, weight, avatar)
             }}>Done</Done>
         </TopBar>
@@ -183,8 +183,9 @@ const EditProfile = ({EditClick, CancelClick, DoneClick}) => {
 
 EditProfile.defaultProps = {
     EditClick:()=>{},
-    CancelClick:()=>{},
+    homeClick:()=>{},
     DoneClick:()=>{},
+    goHomePage:()=>{},
 }
 
 export default EditProfile;

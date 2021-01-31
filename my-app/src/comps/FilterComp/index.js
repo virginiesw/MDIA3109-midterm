@@ -19,21 +19,6 @@ const FilterButton = styled.img`
     cursor: pointer;
 `;
 
-// const FilterComp = () => {
-
-//     return <Container>
-//         <Button>
-//             <FilterButton src="/filter.svg" />
-//         </Button>
-//         <Modal />
-//     </Container>
-// }
-
-// FilterComp.defaultProps = {
-
-// }
-    
-// export default FilterComp;
 
 class FilterComp extends React.Component {
 

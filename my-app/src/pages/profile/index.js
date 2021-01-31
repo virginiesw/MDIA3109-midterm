@@ -19,7 +19,7 @@ const fakedb = [
     }
 ]
 
-const ProfileEditPage = () =>{
+const ProfileEditPage = ({pageHide}) =>{
 
 
     const HandleInsert = (name, weight, year, month, avatar) => {
@@ -30,15 +30,20 @@ const ProfileEditPage = () =>{
         //This will be modified with a post request to our endpoint once the database is set up
         //for now, use fake database as example, doesn't really work, but it sets the layout
         var resp = fakedb.push({avatar: avatar, name: name, weight: weight, year:year, month: month})
-        console.log(resp);
+        var resptest = fakedb;
+        console.log("data", resptest);
     }
 
 
  
 
     return <Container>
-        <EditProfile DoneClick={HandleInsert} />
+        <EditProfile homeClick={pageHide} DoneClick={() => {HandleInsert() ; pageHide()}} />
     </Container>
+}
+
+ProfileEditPage.defaultProps = {
+    pageHide:()=>{},
 }
 
 export default ProfileEditPage;

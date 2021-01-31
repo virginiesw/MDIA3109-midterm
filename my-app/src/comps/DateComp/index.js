@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Component} from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 
@@ -15,40 +15,6 @@ margin-right: 20px;
 margin-left: 20px;
 `;
 
-// const DateComp = () => {
-    
-//     var currentDate = moment().format("DD/MM/YYYY");
-//     const [startdate, setStart] = useState("");
-//     const [counter, setCounter] = useState(0);
-
-//     const GoBack = () => {
-        
-//         const num = + 1;
-//         console.log(num)
-//         setCounter(num)
-//         const startdate = moment().subtract(counter, "days").format("DD-MM-YYYY");
-//         console.log(startdate)
-//         setStart(startdate)
-//     }
-    
-//     // var startdate = moment().subtract(1, "days").format("DD-MM-YYYY");
-
-
-//     return <Container>
-//         <LArrow onClick={GoBack}>⪡</LArrow>
-//         <Date> {currentDate} {startdate}</Date>
-//         <RArrow>⪢</RArrow>
-//     </Container>
-// }
-
-
-
-// DateComp.defaultProps = {
-
-// }
-    
-// export default DateComp;
-
 class DateComp extends Component {
     state = {
       countP: 0,
@@ -64,11 +30,6 @@ class DateComp extends Component {
         }));
       };
       goBack = () => {
-        // console.log("countN", this.state.countN)
-        //    this.setState((prevState, { count }) => ({
-        //   countN: prevState.countN - 1
-        // }));
-
         console.log("Count P", this.state.countP)
         this.setState((prevState, { count }) => ({
          countP: prevState.countP - 1
@@ -79,13 +40,6 @@ class DateComp extends Component {
         }));
       };
 
-    //   handleForward = () => {
-
-    //   };
-
-    //   handleBack = () => {
-
-    //   }
     render() {
         const { handleBack, handleForward } = this.state;
       return <Container>
