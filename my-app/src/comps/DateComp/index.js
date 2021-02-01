@@ -40,12 +40,18 @@ class DateComp extends Component {
         }));
       };
 
+      
+
     render() {
-        const { handleBack, handleForward } = this.state;
+      const {handleBack, handleForward} = this.props
       return <Container>
-       <LArrow onClick={handleBack} onClick={this.goBack}>⪡</LArrow>
+        <div onClick={handleBack}>
+          <LArrow onClick={this.goBack}>⪡</LArrow>
+        </div>
         <Date>{this.state.currentDate}</Date>
-        <RArrow onClick={handleForward} onClick={this.goForward}>⪢</RArrow>
+        <div onClick={handleForward}>
+          <RArrow onClick={this.goForward}>⪢</RArrow>
+        </div> 
       </Container>
     }
   }

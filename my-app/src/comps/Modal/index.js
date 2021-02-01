@@ -51,16 +51,16 @@ const TextCont = styled.div`
 font-size: 20px;
 `;
 
-const Modal = ({most, least, handleClose}) => {
+const Modal = ({most, least, handleClose, clickLeast, clickMost}) => {
 
     return <Container>
         <Close src="/X.svg" onClick={handleClose}/>
         <Center>
             <Title>Filter By:</Title>
             <Options>
-                <TextCont onClick={most}>Most Completed</TextCont>
+                <TextCont onClick={() => { most(); clickMost();}}>Most Completed</TextCont>
                 <HR/>
-                <TextCont onClick={least}>Least Completed</TextCont>
+                <TextCont onClick={() => { least(); clickLeast();}}>Least Completed</TextCont>
             </Options>
         </Center>
     </Container>
@@ -69,6 +69,8 @@ const Modal = ({most, least, handleClose}) => {
 Modal.defaultProps = {
     most:()=>{},
     least:()=>{},
+    clickMost:()=>{},
+    clickLeast:()=>{},
     handleClose:()=>{}
 }
     

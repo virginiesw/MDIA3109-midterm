@@ -106,7 +106,7 @@ const Indicator = ({text,expand}) => {
          }} ><img src="img/close.png"/></div>
          
           <div className="text" expanded={expanded} onClick={()=>{
-            setExpanded(!expanded);}}>{text}</div>
+            setExpanded(!expanded);}}> {text}</div>
           </div>
         </TopCont>
       

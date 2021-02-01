@@ -1,0 +1,10 @@
+[
+    {
+        "id": "1",
+        "name": "Murphy",
+        "weight": "95 lbs",
+        "year": "3",
+        "month": "7",
+        "avatar": "../../img/murphy.png"
+    }
+]

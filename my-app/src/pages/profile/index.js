@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import EditProfile from '../../comps/EditProfile';
+const fakedb = require("../../profileData.json");
 
 const Container = styled.div`
 width: 414px;
@@ -8,16 +9,7 @@ height: 896px;
 border: 1px solid #DAD;
 `;
 
-const fakedb = [
-    {
-        id:1,
-        name:"Murphy",
-        weight:"95 lbs",
-        year:"3",
-        month:"7",
-        avatar:"../../img/murphy.png",
-    }
-]
+
 
 const ProfileEditPage = ({pageHide}) =>{
 
@@ -31,6 +23,7 @@ const ProfileEditPage = ({pageHide}) =>{
         //for now, use fake database as example, doesn't really work, but it sets the layout
         var resp = fakedb.push({avatar: avatar, name: name, weight: weight, year:year, month: month})
         var resptest = fakedb;
+        console.log(resp)
         console.log("data", resptest);
     }
 
