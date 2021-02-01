@@ -5,6 +5,13 @@ import Modal from '../Modal';
 const Container = styled.div`
 position: relative;
 display: flex;
+.open {
+    display: block;
+}
+
+.open.open {
+    display: none;
+}
 `;
 
 const Button = styled.div`
@@ -24,7 +31,10 @@ class FilterComp extends React.Component {
 
     state = { showing: false };
 
+ 
+
     render() {
+        const {filterbyLeast, filterbyMost} = this.props;
         const {showing} = this.state;
         return ( <Container>
                     <Button onClick={() => this.setState({ showing: !showing})}>
@@ -32,7 +42,7 @@ class FilterComp extends React.Component {
                     </Button>         
                 { showing 
                     ?    
-                          <Modal handleClose={() => this.setState({ showing: !showing})}/>
+                          <Modal most={() => this.setState({ showing: !showing})}  clickLeast={() => this.setState({ showing: !showing})} clickMost={filterbyMost} least={filterbyLeast} handleClose={() => this.setState({ showing: !showing})}/>
                     : null
                 }      
         </Container>  
@@ -42,7 +52,31 @@ class FilterComp extends React.Component {
 }
 
 FilterComp.defaultProps = {
-
+    filterbyMost:()=>{},
+    filterbyLeast:()=>{}
 }
 
+// const FilterComp = ({handleLeast, handleMost}) => {
+
+//     const [open, setOpen] = useState(true);
+
+//     return <Container>
+//             <Button>
+//                 <FilterButton src="/filter.svg" />
+//             </Button> 
+//             <div className={open ? "open" : null}>
+//                  <Modal most={handleMost} least={handleLeast} handleClose={setOpen(!open)}/> 
+//             </div>        
+//     </Container>
+// }
+
+
+// FilterComp.defaultProps = {
+//     handleMost:()=>{},
+//     handleLeast:()=>{}
+// }
+
+
 export default FilterComp;
+
+
