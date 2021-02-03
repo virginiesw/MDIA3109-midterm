@@ -24,6 +24,7 @@ const Cancel = styled.text`
     font-size: 24px;
     font-family: sans-serif;
     padding:5%;
+    cursor:pointer;
 `;
 
 const Done = styled.text`
@@ -32,7 +33,8 @@ const Done = styled.text`
     font-size: 24px;
     
     font-family: sans-serif;
-    padding:5%
+    padding:5%;
+    cursor:pointer;
 `;
 
 const Avatar = styled.div`
