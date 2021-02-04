@@ -8,6 +8,7 @@ const Container = styled.div`
 // flex-direction: column-reverse;
 position: relative;
 margin-right: 30px;
+cursor: pointer;
 `;
 
 const AddButton = styled.div`
@@ -77,7 +78,7 @@ class AddItem extends React.Component {
         const {handleBreakfast, handleLunch, handleDinner, handleTreat} = this.props;
 
         return ( <Container>
-                    <AddButton onClick={() => this.setState({ showing: !showing })}>Add Item+</AddButton>          
+                    <AddButton onClick={() => this.setState({ showing: !showing })}>Add Item +</AddButton>          
                 { showing 
                     ?    
                     <IconCont>

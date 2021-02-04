@@ -21,6 +21,7 @@ position: absolute;
 top: 0;
 right: 0;
 margin: 10px;
+cursor: pointer;
 `;
 const InfoCont = styled.div`
 flex: 1;

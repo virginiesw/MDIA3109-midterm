@@ -18,9 +18,13 @@ max-width: 500px;
 padding: 5px;
 `;
 
-const AddButton = styled.img``;
+const AddButton = styled.img`
+cursor: pointer;
+`;
 
-const DeleteButton = styled.img``;
+const DeleteButton = styled.img`
+cursor: pointer;
+`;
 
 const HeaderCont = styled.div`
 display: flex;
