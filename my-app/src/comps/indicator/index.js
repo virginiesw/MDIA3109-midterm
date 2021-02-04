@@ -31,6 +31,7 @@ margin-bottom: 12px;
 
 const TopCont = styled.div`
 display:flex;
+margin-top: 15px;
     img{
         position: absolute;
             top: 18px;
@@ -85,6 +86,14 @@ const Indicator = ({text,expand}) => {
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(false);
     const [expanded3, setExpanded3] = useState(false);
+
+    const clearState = () => {
+        setExpanded(false);
+        setExpanded1(false);
+        setExpanded2(false);
+        setExpanded3(false)
+    }
+
     useEffect(()=>{
         setExpanded(expand)
         setCompletion(1)
@@ -124,24 +133,31 @@ const Indicator = ({text,expand}) => {
           <img src="img/empty.png"/>
           </div>
           <div>
-       <Slider expanded={expanded} completion={completion} onClick={()=>{
-        setExpanded(!expanded) ;
-        
+       <Slider expanded={expanded} onClick={()=>{
+        clearState();
+        setExpanded(!expanded);
+        setCompletion(1);
        }} />
 </div>
 <div>
-       <Slider expanded1={expanded1} completion={completion} onClick={()=>{
+       <Slider expanded1={expanded1} onClick={()=>{
+        clearState();
         setExpanded1(!expanded1);
+        setCompletion(2);
        }} />
 </div>
 <div>
-       <Slider expanded2={expanded2} completion={completion} onClick={()=>{
+       <Slider expanded2={expanded2} onClick={()=>{
+        clearState();
         setExpanded2(!expanded2);
+        setCompletion(3);
        }} />
 </div>
 <div>
-       <Slider expanded3={expanded3} completion={completion} onClick={()=>{
+       <Slider expanded3={expanded3} onClick={()=>{
+        clearState();
         setExpanded3(!expanded3);
+        setCompletion(4);
        }} />
 </div>
 
