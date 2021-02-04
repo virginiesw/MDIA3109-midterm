@@ -8,7 +8,6 @@ const Container = styled.div`
 // flex-direction: column-reverse;
 position: relative;
 margin-right: 30px;
-cursor: pointer;
 `;
 
 const AddButton = styled.div`
@@ -22,6 +21,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 // background-color: white;
+cursor: pointer;
 `;
 
 const TextLine = styled.div`
@@ -34,6 +34,7 @@ margin-bottom: -5px;
 
 const MenuText = styled.div`
 font-size: 22px;
+cursor: pointer;
 `;
 
 const AddMenu = styled.div`
@@ -59,6 +60,7 @@ position: absolute;
 top: 0;
 left: 0;
 margin: 10px;
+cursor: pointer;
 `;
 
 const IconCont = styled.div`

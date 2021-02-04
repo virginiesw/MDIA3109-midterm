@@ -72,6 +72,7 @@ background-color:${props=>props.expanded2 ? "#FF9E44":"#FFFFF"};
 background-color:${props=>props.expanded3 ? "#FF9E44":"#FFFFF"};
 align-item:center;
 align-self:center;
+cursor: pointer;
 `;
 
 
