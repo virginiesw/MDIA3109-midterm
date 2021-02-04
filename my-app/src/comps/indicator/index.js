@@ -32,8 +32,8 @@ margin-bottom: 12px;
 const TopCont = styled.div`
 display:flex;
     img{
-        position: absolute;
-            top: 18px;
+        // position: absolute;
+            top: 20px;
             left: 20px;
     }
 `;

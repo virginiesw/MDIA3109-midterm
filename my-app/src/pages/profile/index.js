@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import EditProfile from '../../comps/EditProfile';
+import Indicator from '../../comps/indicator';
 const fakedb = require("../../profileData.json");
 
 const Container = styled.div`
@@ -31,6 +32,8 @@ const ProfileEditPage = ({pageHide}) =>{
  
 
     return <Container>
+        <Indicator/>
+        <Indicator/>
         <EditProfile homeClick={pageHide} DoneClick={() => {HandleInsert() ; pageHide()}} />
     </Container>
 }

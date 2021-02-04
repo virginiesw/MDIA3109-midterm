@@ -173,10 +173,25 @@ const MainPage = () => {
 
 
     return <Container>
+       
+        
+    
+
         <div className="title" onClick={filterByDate}>Feeding Schedule</div>
         <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div>
+
+        {food.map(o=>{
+        return <Indicator  
+             text={o.mComplete}> 
+         </Indicator>})}
+ 
+        </div>
+        
+        <div className="addComp"><AddItem/></div> 
+        
+
             {food.map(o => {
                 return <Indicator
                     text={o.meal} />
@@ -184,6 +199,7 @@ const MainPage = () => {
         </div>
         {/* <div>{currentDate}</div> */}
         <div className="addComp"><AddItem /></div>
+
     </Container>
 }
 
