@@ -26,7 +26,6 @@ font-family: 'Roboto', sans-serif;
 }
 
 
-
 .title {
     font-size: 30px;
     margin-top: 10px;
@@ -175,6 +174,10 @@ const MainPage = () => {
 
 
     return <Container>
+       
+        
+    
+
         <div className="title" onClick={filterByDate}>Feeding Schedule</div>
         <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
@@ -183,9 +186,11 @@ const MainPage = () => {
         return <Indicator  
              text={o.mComplete}> 
          </Indicator>})}
+ 
         </div>
-        {/* <div>{currentDate}</div> */}
-        <div className="addComp"><AddItem/></div>
+        
+        <div className="addComp"><AddItem/></div> 
+        
     </Container>
 }
 
