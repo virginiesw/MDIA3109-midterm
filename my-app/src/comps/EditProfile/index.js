@@ -24,13 +24,14 @@ const Cancel = styled.text`
     font-size: 24px;
     font-family: sans-serif;
     padding:5%;
+    cursor: pointer;
 `;
 
 const Done = styled.text`
     color:#44DDFF;
     font-weight: bold;
     font-size: 24px;
-    
+    cursor: pointer;
     font-family: sans-serif;
     padding:5%
 `;
@@ -67,6 +68,7 @@ const Edit = styled.img`
     position:relative;
     left:180px;
     bottom:40px;
+    cursor: pointer;
 `;
 
 const Info = styled.div`

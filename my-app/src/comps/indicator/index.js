@@ -19,6 +19,8 @@ align-items: center;
 justify-content: center;
 align-slef:center;
 font-size:24px;
+margin-bottom: 12px;
+
 .topcont{
     display:flex;
     margin-bottom:-15px;
@@ -77,24 +79,29 @@ align-self:center;
 const Indicator = ({text,expand}) => {
     const [checked,setChecked] = useState(true);
     // const [focused,setFocused] = useState(true);
+    const [completion, setCompletion] = useState(0)
     const [expanded, setExpanded] = useState(false);
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(false);
     const [expanded3, setExpanded3] = useState(false);
     useEffect(()=>{
         setExpanded(expand)
+        setCompletion(1)
     },[expand])
     useEffect(()=>{
         setExpanded(expanded1)
+        setCompletion(2)
     },[expanded1])
     useEffect(()=>{
         setExpanded(expanded2)
         setExpanded1(expanded2)
+        setCompletion(3)
     },[expanded2])
     useEffect(()=>{
         setExpanded(expanded3)
         setExpanded1(expanded3)
         setExpanded2(expanded3)
+        setCompletion(4)
     },[expanded3])
     
     return <Container checked={checked}  >
@@ -113,30 +120,31 @@ const Indicator = ({text,expand}) => {
       <SliderCont>
           
       <div >
-          <img src="img/completed.png"/>
+          <img src="img/empty.png"/>
           </div>
           <div>
-       <Slider expanded={expanded} onClick={()=>{
+       <Slider expanded={expanded} completion={completion} onClick={()=>{
         setExpanded(!expanded) ;
+        
        }} />
 </div>
 <div>
-       <Slider expanded1={expanded1} onClick={()=>{
+       <Slider expanded1={expanded1} completion={completion} onClick={()=>{
         setExpanded1(!expanded1);
        }} />
 </div>
 <div>
-       <Slider expanded2={expanded2} onClick={()=>{
+       <Slider expanded2={expanded2} completion={completion} onClick={()=>{
         setExpanded2(!expanded2);
        }} />
 </div>
 <div>
-       <Slider expanded3={expanded3} onClick={()=>{
+       <Slider expanded3={expanded3} completion={completion} onClick={()=>{
         setExpanded3(!expanded3);
        }} />
 </div>
 
-<div><img src="img/empty.png"/></div>
+<div><img src="img/completed.png"/></div>
      </SliderCont>
 
   
@@ -150,7 +158,8 @@ Indicator.defaultProps = {
      expanded:true,
      expanded1:true,
      expanded2:true,
-     expanded3:true
+     expanded3:true,
+     completion: 0
 }
     
 export default Indicator;

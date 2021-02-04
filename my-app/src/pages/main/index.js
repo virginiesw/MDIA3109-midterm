@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import AddItem from '../../comps/AddItem';
-import Indicator from '../../comps/indicator'; 
+import Indicator from '../../comps/indicator';
 import DateComp from '../../comps/DateComp';
 import FilterComp from '../../comps/FilterComp';
 
@@ -24,7 +24,6 @@ font-family: 'Roboto', sans-serif;
     position: absolute;
     right: 0;
 }
-
 
 .title {
     font-size: 30px;
@@ -58,31 +57,31 @@ const MainPage = () => {
     const [num, setNum] = useState(0) //used in junction with currentDate
 
     const dateForward = () => { //this moves the date forward one, will be used with filtering by date
-           setNum(
-               num +1
-           )
-           console.log("current number", num)
-           setCurrentDate(
-            moment().add(num +1, "days").format("DD/MM/YYYY")
-           )
-        };
+        setNum(
+            num + 1
+        )
+        console.log("current number", num)
+        setCurrentDate(
+            moment().add(num + 1, "days").format("DD/MM/YYYY")
+        )
+    };
 
     const dateBack = () => { //this moves current date back by one, will be used with filtering by date
-           setNum(
-               num -1
-           )
-           console.log("current number", num)
-           setCurrentDate(
-            moment().add(num -1, "days").format("DD/MM/YYYY")
-           )
-        };
+        setNum(
+            num - 1
+        )
+        console.log("current number", num)
+        setCurrentDate(
+            moment().add(num - 1, "days").format("DD/MM/YYYY")
+        )
+    };
 
 
     const filterLeast = () => { //this filters by meal of least completion 
         const copy = food
         if (sortFoodLeast) {
-            copy.sort(sortLeastComplete)    
-        }  
+            copy.sort(sortLeastComplete)
+        }
         console.log("food filtered least", copy)
         setSortFoodLeast(!sortFoodLeast)
         setFood(copy)
@@ -91,30 +90,30 @@ const MainPage = () => {
     const filterMost = () => { //this filters by meal of most completetion 
         const copy = food
         if (sortFoodMost) {
-            copy.sort(sortMostComplete)    
-        }  
+            copy.sort(sortMostComplete)
+        }
         console.log("food filtered most", copy)
         setSortFoodMost(!sortFoodMost)
         setFood(copy)
     }
 
-    const GetFood = async() =>{ //this gets food from array
+    const GetFood = async () => { //this gets food from array
         var resp = meals //this will be a get request once we hve the API end points
-        setFood(resp) 
+        setFood(resp)
         console.log("get food", resp)
     }
 
-    useEffect(()=>{ //this loads the food from the array on page load. 
+    useEffect(() => { //this loads the food from the array on page load. 
         GetFood()
     }, []);
 
     const filterByDate = () => {
-    const copy = food
-         var filtered = copy.filter((o, i)=>{
-        return o.date.includes(currentDate);
-    })
-    setFood(filtered)
-    console.log("current date filtered", filtered);
+        const copy = food
+        var filtered = copy.filter((o, i) => {
+            return o.date.includes(currentDate);
+        })
+        setFood(filtered)
+        console.log("current date filtered", filtered);
     }
 
     // const filterByDate = () => { //this filters by meal of most completetion 
@@ -142,15 +141,15 @@ const MainPage = () => {
     // setFood(foodSortedByDate);
     // setSortFoodDate(!sortFoodDate);
     // }
- 
-
-// const showFood = () =>{
-//     setFood(filterDateBack)
-// }
 
 
+    // const showFood = () =>{
+    //     setFood(filterDateBack)
+    // }
 
-// console.log("filtering by dy", filterDateBack)
+
+
+    // console.log("filtering by dy", filterDateBack)
 
 
     // var foodFilter = meals.filter((o, i)=>{
@@ -182,6 +181,7 @@ const MainPage = () => {
         <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div>
+
         {food.map(o=>{
         return <Indicator  
              text={o.mComplete}> 
@@ -191,29 +191,38 @@ const MainPage = () => {
         
         <div className="addComp"><AddItem/></div> 
         
+
+            {food.map(o => {
+                return <Indicator
+                    text={o.meal} />
+            })}
+        </div>
+        {/* <div>{currentDate}</div> */}
+        <div className="addComp"><AddItem /></div>
+
     </Container>
 }
 
 
 export default MainPage;
 
-function sortMostComplete(a,b){
-    // if (a.mComplete > b.mComplete){
+function sortMostComplete(a, b) {
+    // if (a.completion > b.completion){
     //     return 1
-    // } else if (a.mComplete < b.mComplete){
+    // } else if (a.completion < b.completion){
     //     return -1
     // } else {
     //     return 0
     // }
-    return b.mComplete - a.mComplete
+    return b.completion - a.completion
 }
-function sortLeastComplete(a,b){
-    // if (a.mComplete > b.mComplete){
+function sortLeastComplete(a, b) {
+    // if (a.completion > b.completion){
     //     return -1
-    // } else if (a.mComplete < b.mComplete){
+    // } else if (a.completion < b.completion){
     //     return 1
     // } else {
     //     return 0
     // }
-    return a.mComplete - b.mComplete
+    return a.completion - b.completion
 }
