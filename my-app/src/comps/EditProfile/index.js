@@ -103,6 +103,8 @@ const InfoEdit = styled.input`
 
 const HorizontalRule = styled.hr`
     width:77%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 `;
 
 const fakedb = require('../../profileData.json')
@@ -176,7 +178,6 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
             <HorizontalRule></HorizontalRule>
 
         </Info>
-
     </Container>
 }
 

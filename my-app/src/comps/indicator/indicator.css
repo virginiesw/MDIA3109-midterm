@@ -1,0 +1,68 @@
+.progress-bar {
+  position: relative;
+  height: 20px;
+  width: 200px;
+  border-radius: 50px;
+  border: 1px solid #333;
+}
+
+.filler {
+  background: #FF9E44;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}
+
+.bar {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container {
+  background-color: #ffffff;
+  width: 340px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.bowlicon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.bowlicon:hover {
+  filter: drop-shadow(0px 0px 5px #ff9e44);
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: -5px;
+}
+
+.closeimg {
+  margin-top: -20px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  left: -145px;
+  top: 30px;
+  cursor: pointer;
+}
+
+.closeimg:hover {
+  filter: drop-shadow(0px 0px 2px #333333);
+}

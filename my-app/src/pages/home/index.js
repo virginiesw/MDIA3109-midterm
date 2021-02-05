@@ -14,6 +14,7 @@ font-family: 'Roboto', sans-serif;
 background-color: #004476;
 
 .mainCont {
+    margin-top: -30px;
     margin-left: 24px;
 }
 
