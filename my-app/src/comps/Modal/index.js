@@ -41,6 +41,10 @@ const Close = styled.img`
     left: 10px;
     top: 10px;
     cursor: pointer;
+
+    :hover {
+        filter: drop-shadow(0px 0px 1px #999999);
+      }
 `;
 
 const HR = styled.hr`

@@ -233,7 +233,7 @@ class Indicator extends React.Component {
             <div onClick={() =>
                 onClick(id)} className="container">{id}
                 <img className="closeimg" onClick={() => {
-                    // delete meal
+                    // deleting meals will be an axios delete once the real DB is implemented
                 }} src={close}></img>
                 <h2> {this.props.mealname}</h2>
                 <div className="bar">
