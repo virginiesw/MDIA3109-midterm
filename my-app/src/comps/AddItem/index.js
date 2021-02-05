@@ -9,6 +9,14 @@ const Container = styled.div`
 position: relative;
 margin-right: 30px;
 margin-bottom: 10px;
+
+.open {
+    display: none;
+}
+
+.open.open {
+    display: block;
+}
 `;
 
 const AddButton = styled.div`
@@ -22,11 +30,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 // background-color: white;
-<<<<<<< HEAD
-cursor:pointer;
-=======
 cursor: pointer;
->>>>>>> main
 `;
 
 const TextLine = styled.div`
@@ -39,11 +43,7 @@ margin-bottom: -5px;
 
 const MenuText = styled.div`
 font-size: 22px;
-<<<<<<< HEAD
-cursor:pointer;
-=======
 cursor: pointer;
->>>>>>> main
 `;
 
 const AddMenu = styled.div`
@@ -69,11 +69,7 @@ position: absolute;
 top: 0;
 left: 0;
 margin: 10px;
-<<<<<<< HEAD
-cursor:pointer;
-=======
 cursor: pointer;
->>>>>>> main
 `;
 
 const IconCont = styled.div`
@@ -84,39 +80,75 @@ margin-left: -30px;
 `;
 
 
-class AddItem extends React.Component {
+// class AddItem extends React.Component {
 
-    state = { showing: false };
+//     state = { showing: false };
 
-    render() {
-        const { showing} = this.state;
-        const {handleBreakfast, handleLunch, handleDinner, handleTreat} = this.props;
+//     render() {
+//         const { showing} = this.state;
+//         const [meal, setMeal] = this.state("")
+//         const {handleBreakfast, handleLunch, handleDinner, handleTreat, meal} = this.props;
 
-        return ( <Container>
-                    <AddButton onClick={() => this.setState({ showing: !showing })}>Add Item +</AddButton>          
-                { showing 
-                    ?    
-                    <IconCont>
-                            <AddMenu>
+//         return ( <Container>
+//                     <AddButton onClick={() => this.setState({ showing: !showing })}>Add Item +</AddButton>          
+//                 { showing 
+//                     ?    
+//                     <IconCont>
+//                             <AddMenu>
                          
-                                <CloseIcon onClick={() => this.setState({ showing: !showing })} src={close} width="20px"></CloseIcon>
+//                                 <CloseIcon onClick={() => this.setState({ showing: !showing })} src={close} width="20px"></CloseIcon>
                 
-                            <MenuText onClick={this.props.handleBreakfast}>Breakfast</MenuText>
-                            <TextLine></TextLine>
-                            <MenuText onClick={this.props.handleLunch}>Lunch</MenuText>
-                            <TextLine></TextLine>
-                            <MenuText onClick={this.props.handleDinner}>Dinner</MenuText>
-                            <TextLine></TextLine>
-                            <MenuText onClick={this.props.handleTreat}>Treat</MenuText>
-                        </AddMenu>  
-                    </IconCont>
-                    : null
-                }      
-        </Container>  
-        )
+//                             <MenuText onClick={this.props.handleBreakfast} setMeal="breakfast">Breakfast</MenuText>
+//                             <TextLine></TextLine>
+//                             <MenuText onClick={this.props.handleLunch}  setMeal="lunch">Lunch</MenuText>
+//                             <TextLine></TextLine>
+//                             <MenuText onClick={this.props.handleDinner}  setMeal="dinner">Dinner</MenuText>
+//                             <TextLine></TextLine>
+//                             <MenuText onClick={this.props.handleTreat}>Treat</MenuText>
+//                         </AddMenu>  
+//                     </IconCont>
+//                     : null
+//                 }      
+//         </Container>  
+//         )
    
-    }   
+//     }   
+// }
+
+const AddItem = ({handleBreakfast, handleLunch, handleDinner, handleTreat}) =>{
+
+
+    const [open, setOpen] = useState(true);
+
+    return <Container>
+         <AddButton onClick={() => {
+                   setOpen(!open);
+              }} >Add Item +</AddButton>  
+         <div className={open ? "open" : null}>
+            <IconCont>
+                <AddMenu>
+                <CloseIcon onClick={() => {
+                   setOpen(!open);
+              }}
+              src={close} width="20px">
+               
+              </CloseIcon>
+                <MenuText onClick={handleBreakfast} setMeal="breakfast">Breakfast</MenuText>
+                <TextLine></TextLine>
+                <MenuText onClick={handleLunch}  setMeal="lunch">Lunch</MenuText>
+                <TextLine></TextLine>
+                <MenuText onClick={handleDinner}  setMeal="dinner">Dinner</MenuText>
+                <TextLine></TextLine>
+                <MenuText onClick={handleTreat}>Treat</MenuText>
+            </AddMenu>  
+        </IconCont>    
+         </div>
+    
+    </Container>
+    
 }
+
+
 
 AddItem.defaultProps = {
         handleBreakfast:()=>{},

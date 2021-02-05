@@ -53,6 +53,8 @@ font-family: 'Roboto', sans-serif;
 const MainPage = () => {
 
 
+    const [mealname, setMealName] = useState();
+
     const [food, setFood] = useState([]); //for getting food array 
     const [sortFoodLeast, setSortFoodLeast] = useState(true); //for filter food by least complete
     const [sortFoodMost, setSortFoodMost] = useState(true); //for filtering food by most complete
@@ -122,6 +124,14 @@ const MainPage = () => {
     console.log("current date filtered", filtered);
     }
 
+    const addMeal = (mealname) => {
+        console.log("meal name", mealname)
+
+       // var resp = axios.post("website api endpoint", {meal: mealname, completion: expanded, date, currentDate}) this is where we would do an axios post to the database, but for now, just pretend that its pushing to our fake db :) 
+      // console.log("added item", resp);
+      // setFood(resp)
+    }
+
     // const filterByDate = () => { //this filters by meal of most completetion 
     //     const copy = food
     //     if (sortFoodDate) {
@@ -184,12 +194,13 @@ const MainPage = () => {
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div className="food">
         {food.map(o=>{
-        return <Indicator  
+        return <Indicator expanded={o.expanded}
              text={o.meal}> 
          </Indicator>})}
         </div>
         {/* <div>{currentDate}</div> */}
-        <div className="addComp"><AddItem/></div>
+        <div className="addComp" 
+        onClick={addMeal}><AddItem/></div>
     </Container>
 }
 
