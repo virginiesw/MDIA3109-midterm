@@ -179,10 +179,11 @@ const MainPage = () => {
         <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div>
-        {food.map(o=>{
-        return <Indicator  
-             text={o.mComplete}> 
-         </Indicator>})}
+            {food.map(o => {
+                return <Indicator
+                    text={o.id}
+                    />
+            })}
         </div>
         {/* <div>{currentDate}</div> */}
         <div className="addComp"><AddItem/></div>

@@ -42,7 +42,6 @@ const ImgCont = styled.div`
     border-radius: 100%;
     border: 10px solid white;
     z-index: 10;
-    border: 6px solid #CCD9DF;
 `;
 
 const Img = styled.img`
