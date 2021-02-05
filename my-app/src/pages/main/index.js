@@ -6,7 +6,7 @@ import Indicator from '../../comps/indicator';
 import DateComp from '../../comps/DateComp';
 import FilterComp from '../../comps/FilterComp';
 
-const meals = require("../../mealData.json");
+// const meals = require("../../mealData.json");
 
 
 const Container = styled.div`
@@ -47,13 +47,61 @@ font-family: 'Roboto', sans-serif;
  font-weight: bold;
 }
 
+.food {
+    overflow: scroll;
+    height: 400px;
+    white-space: nowrap
+}
+
 `;
+
+const meals = [
+    {
+        "id": "1",
+        "meal": "Breakfast",
+        "treatNum": "6",
+        "perc": 75,
+        "date": "31/01/2021",
+        "time": "6"
+    },
+    {
+        "id": "2",
+        "meal": "Lunch",
+        "perc": 25,
+        "treatNum": "6",
+        "date": "31/01/2021",
+        "time": "9"
+    },
+    {
+        "id": "3",
+        "meal": "Dinner",
+        "perc": 100,
+        "treatNum": "6",
+        "date": "30/01/2021",
+        "time": "20"
+    },
+    {
+        "id": "4",
+        "meal": "Breakfast",
+        "perc": 75,
+        "treatNum": "6",
+        "date": "30/01/2021",
+        "time": "7"
+    },
+    {
+        "id": "5",
+        "meal": "Lunch",
+        "perc": 25,
+        "treatNum": "6",
+        "date": "01/02/2021",
+        "time": "9"
+    }
+]
 
 
 const MainPage = () => {
 
 
-    const [mealname, setMealName] = useState();
 
     const [food, setFood] = useState([]); //for getting food array 
     const [sortFoodLeast, setSortFoodLeast] = useState(true); //for filter food by least complete
@@ -70,6 +118,7 @@ const MainPage = () => {
            setCurrentDate(
             moment().add(num +1, "days").format("DD/MM/YYYY")
            )
+           console.log(food)
         };
 
     const dateBack = () => { //this moves current date back by one, will be used with filtering by date
@@ -83,7 +132,7 @@ const MainPage = () => {
         };
 
 
-    const filterLeast = () => { //this filters by meal of least completion 
+    const filterLeast = () => { //this filters by meal of least perc 
         const copy = food
         if (sortFoodLeast) {
             copy.sort(sortLeastComplete)    
@@ -125,11 +174,22 @@ const MainPage = () => {
     }
 
     const addMeal = (mealname) => {
-        console.log("meal name", mealname)
+        console.log("meal name final", mealname)
 
-       // var resp = axios.post("website api endpoint", {meal: mealname, completion: expanded, date, currentDate}) this is where we would do an axios post to the database, but for now, just pretend that its pushing to our fake db :) 
+       // var resp = axios.post("website api endpoint", {meal: mealname, perc: perc, date: currentDate}) this is where we would do an axios post to the database, but for now, just pretend that its pushing to our fake db :) 
       // console.log("added item", resp);
       // setFood(resp)
+    }
+
+    const handleMore = () => {
+      //  var resp = meals//this will modify db input, grab meal id an update accordingly
+      //  resp.perc(+ 25)
+  
+    }
+
+    const handleLess = () => {
+      //  var resp = meals //this will modify db input, grab meal id an update accordingly
+     //   resp.perc(- 25)
     }
 
     // const filterByDate = () => { //this filters by meal of most completetion 
@@ -194,13 +254,13 @@ const MainPage = () => {
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div className="food">
         {food.map(o=>{
-        return <Indicator expanded={o.expanded}
-             text={o.meal}> 
+        return <Indicator clickLess={handleLess} clickMore={handleMore}
+             mealname={o.meal} perc={o.perc}> 
          </Indicator>})}
         </div>
         {/* <div>{currentDate}</div> */}
         <div className="addComp" 
-        onClick={addMeal}><AddItem/></div>
+        onClick={addMeal}><AddItem handleAdd={addMeal}/></div>
     </Container>
 }
 
@@ -208,22 +268,22 @@ const MainPage = () => {
 export default MainPage;
 
 function sortMostComplete(a,b){
-    // if (a.completion > b.completion){
+    // if (a.perc > b.perc){
     //     return 1
-    // } else if (a.completion < b.completion){
+    // } else if (a.perc < b.perc){
     //     return -1
     // } else {
     //     return 0
     // }
-    return b.completion - a.completion
+    return b.perc - a.perc
 }
 function sortLeastComplete(a,b){
-    // if (a.completion > b.completion){
+    // if (a.perc > b.perc){
     //     return -1
-    // } else if (a.completion < b.completion){
+    // } else if (a.perc < b.perc){
     //     return 1
     // } else {
     //     return 0
     // }
-    return a.completion - b.completion
+    return a.perc - b.perc
 }

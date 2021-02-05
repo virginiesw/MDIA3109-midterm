@@ -1,0 +1,32 @@
+.progress-bar {
+    position: relative;
+    height: 20px;
+    width: 200px;
+    border-radius: 50px;
+    border: 1px solid #333;
+  }
+  
+  .filler {
+    background: #FF9E44;
+    height: 100%;
+    border-radius: inherit;
+    transition: width .2s ease-in;
+  }
+
+  .bar {
+      display: flex;
+      width: 100%;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-around;
+  }
+
+  .container {
+      background-color: #ffffff;
+      width: 350px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      margin: 10px;
+  }

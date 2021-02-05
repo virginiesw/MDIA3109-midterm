@@ -4,7 +4,10 @@
         "meal": "Breakfast",
         "completion": 3,
         "treatNum": "6",
+        "expanded": true,
         "expanded1": true,
+        "expanded2": true,
+        "expanded3": true,
         "date": "31/01/2021",
         "time": "6"
     },
