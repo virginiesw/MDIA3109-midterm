@@ -34,8 +34,8 @@ const TopCont = styled.div`
 display:flex;
 margin-top: 15px;
     img{
-        position: absolute;
-            top: 18px;
+        // position: absolute;
+            top: 20px;
             left: 20px;
     }
 `;
