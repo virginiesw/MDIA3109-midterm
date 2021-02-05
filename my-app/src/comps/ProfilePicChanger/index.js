@@ -39,9 +39,7 @@ class ProfilePicChanger extends Component {
 
   render() {
     const imageMapper = this.state.imagesArray.map((image, index)=>{
-      return (
-      
-             <img src={image}
+      return ( <img src={image}
             onClick={() => this.props.handleImageChange(image)}
             height="48px"
           />
@@ -49,10 +47,7 @@ class ProfilePicChanger extends Component {
     })
 
 
-  return (
-
-
-  <div className="ProfilePicChanger">
+  return  <div className="ProfilePicChanger">
     <Button type="primasry" onClick={this.showModal}>
       Open Modal
       </Button>
@@ -69,7 +64,7 @@ class ProfilePicChanger extends Component {
     </Modal> {""}
   </div>
 
-);
+
   }
   
   }
