@@ -94,6 +94,7 @@ const Indicator = ({ text, expand }) => {
     const [checked, setChecked] = useState(true);
     // const [focused,setFocused] = useState(true);
     const [completion, setCompletion] = useState(0)
+    const [stateE, setStateE] = useState("");
     const [expanded, setExpanded] = useState(false);
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(false);
@@ -107,19 +108,27 @@ const Indicator = ({ text, expand }) => {
     }
 
     useEffect(() => {
-        setExpanded(expand)
-    }, [expand])
+        setExpanded(expanded)
+        setStateE(expanded)
+        console.log("state E", stateE)
+    }, [expanded])
+
     useEffect(() => {
         setExpanded(expanded1)
+        console.log("expanded 2nd", expanded);
     }, [expanded1])
+
     useEffect(() => {
         setExpanded(expanded2)
         setExpanded1(expanded2)
+        console.log("expanded 3rd", expanded);
     }, [expanded2])
+    
     useEffect(() => {
         setExpanded(expanded3)
         setExpanded1(expanded3)
         setExpanded2(expanded3)
+        console.log("expanded 4th", expanded);
     }, [expanded3])
 
     return <Container checked={checked}  >
@@ -135,9 +144,7 @@ const Indicator = ({ text, expand }) => {
                    
                     </div> */}
 
-                <div className="text" expanded={expanded} onClick={() => {
-                    setExpanded(!expanded);
-                }}> {text}</div>
+                <div className="text"> {text}</div>
             </div>
         </TopCont>
 
@@ -154,21 +161,21 @@ const Indicator = ({ text, expand }) => {
                 }} />
             </div>
             <div>
-                <Slider expanded1={expanded1} onClick={() => {
+                <Slider expanded={expanded1} onClick={() => {
                     clearState();
                     setExpanded1(!expanded1);
                     setCompletion(2);
                 }} />
             </div>
             <div>
-                <Slider expanded2={expanded2} onClick={() => {
+                <Slider expanded={expanded2} onClick={() => {
                     clearState();
                     setExpanded2(!expanded2);
                     setCompletion(3);
                 }} />
             </div>
             <div>
-                <Slider expanded3={expanded3} onClick={() => {
+                <Slider expanded={expanded3} onClick={() => {
                     clearState();
                     setExpanded3(!expanded3);
                     setCompletion(4);
