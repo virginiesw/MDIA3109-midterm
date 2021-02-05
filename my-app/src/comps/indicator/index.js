@@ -228,16 +228,17 @@ class Indicator extends React.Component {
 
     render() {
 
-        const {mealname, perc, clickLess, clickMore} = this.props;
+        const {mealname, perc, clickLess, clickMore, id, onClick} = this.props;
         return (
-            <div className="container">
+            <div onClick={()=>
+                onClick(id)} className="container">{id}
                 <h2> {this.props.mealname}</h2>
                 <div className="bar">
-                        <button onClick={() => clickMore}>
+                        <button onClick={clickMore}>
                             <img style={{ width: "30px", objectFit: "cover"}} src="img/empty.png" />
                         </button>  
                          <ProgressBar percentage={perc} />
-                        <button onClick={() => clickLess}>
+                        <button onClick={clickLess}>
                             <img style={{ width: "30px"}} src="img/completed.png" />
                         </button>
                 </div>
@@ -262,7 +263,8 @@ Indicator.defaultProps = {
     mealname: "breakfast",
     perc: 25,
     clickLess:()=>{},
-    clickMore:()=>{}
+    clickMore:()=>{},
+    id: null
 }
 
 
