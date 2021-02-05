@@ -106,7 +106,7 @@ const HorizontalRule = styled.hr`
 
 const fakedb = require('../../profileData.json')
 
-const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
+const EditProfile = ({EditClick, homeClick, DoneClick, submitClick}) => {
 
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
@@ -119,7 +119,7 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
             <Cancel onClick={homeClick}>Cancel</Cancel>
     
             <Done onClick={()=>{
-                    DoneClick(name, weight, year, month)
+                    DoneClick(); submitClick(name, weight, year, month);
                 }}>Done
             </Done>
         </TopBar>
@@ -184,6 +184,7 @@ EditProfile.defaultProps = {
     homeClick:()=>{},
     DoneClick:()=>{},
     goHomePage:()=>{},
+    submitClick:()=>{},
 }
 
 export default EditProfile;
