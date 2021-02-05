@@ -22,11 +22,7 @@ const Cancel = styled.text`
     font-size: 24px;
     font-family: sans-serif;
     padding:5%;
-<<<<<<< HEAD
-    cursor:pointer;
-=======
     cursor: pointer;
->>>>>>> main
 `;
 
 const Done = styled.input`
