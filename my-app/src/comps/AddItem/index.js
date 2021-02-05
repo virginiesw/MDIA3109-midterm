@@ -21,6 +21,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 // background-color: white;
+cursor: pointer;
 `;
 
 const TextLine = styled.div`
@@ -33,6 +34,7 @@ margin-bottom: -5px;
 
 const MenuText = styled.div`
 font-size: 22px;
+cursor: pointer;
 `;
 
 const AddMenu = styled.div`
@@ -58,6 +60,7 @@ position: absolute;
 top: 0;
 left: 0;
 margin: 10px;
+cursor: pointer;
 `;
 
 const IconCont = styled.div`
@@ -77,7 +80,7 @@ class AddItem extends React.Component {
         const {handleBreakfast, handleLunch, handleDinner, handleTreat} = this.props;
 
         return ( <Container>
-                    <AddButton onClick={() => this.setState({ showing: !showing })}>Add Item+</AddButton>          
+                    <AddButton onClick={() => this.setState({ showing: !showing })}>Add Item +</AddButton>          
                 { showing 
                     ?    
                     <IconCont>

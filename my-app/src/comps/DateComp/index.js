@@ -6,9 +6,13 @@ const Container = styled.div`
 display:flex;
 `;
 
-const LArrow = styled.div``;
+const LArrow = styled.div`
+cursor: pointer;
+`;
 
-const RArrow = styled.div``;
+const RArrow = styled.div`
+cursor: pointer;
+`;
 
 const Date = styled.div`
 margin-right: 20px;

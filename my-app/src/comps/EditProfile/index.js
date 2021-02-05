@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-
-import murphy from './imgs/murphy.png';
 import editicon from './imgs/editIcon.png';
 
 const Container = styled.div`
@@ -24,13 +22,17 @@ const Cancel = styled.text`
     font-size: 24px;
     font-family: sans-serif;
     padding:5%;
+    cursor: pointer;
 `;
 
-const Done = styled.text`
+const Done = styled.input`
+    margin-top:2vw;
     color:#44DDFF;
+    background-color:#004476;
+    border:none;
     font-weight: bold;
     font-size: 24px;
-    
+    cursor: pointer;
     font-family: sans-serif;
     padding:5%
 `;
@@ -67,6 +69,7 @@ const Edit = styled.img`
     position:relative;
     left:180px;
     bottom:40px;
+    cursor: pointer;
 `;
 
 const Info = styled.div`
@@ -82,16 +85,17 @@ const Title = styled.text`
 `;
 
 const InfoBox = styled.div`
-    margin-left:4vw;
-    margin-bottom:2vw;
-    margin-top:2vw;
+    padding-right:2vw;
+    padding-left:2vw;
+    margin-bottom:1vw;
+    margin-top:1vw;
     display:flex;
     align-items:center;
 `;
 
 const InfoEdit = styled.input`
     position:absolute;
-    left:180px;
+    left:140px;
     background-color:#CCD9DF;
     padding:20px;;
     border-radius:5px;
@@ -101,16 +105,7 @@ const HorizontalRule = styled.hr`
     width:77%;
 `;
 
-const fakedb = [
-    {
-        id:1,
-        name:"Murphy",
-        weight:"95",
-        year:"3",
-        month:"7",
-        avatar:murphy,
-    }
-]
+const fakedb = require('../../profileData.json')
 
 const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
 
@@ -123,9 +118,7 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
     return <Container>
         <TopBar>
             <Cancel onClick={homeClick}>Cancel</Cancel>
-            <Done onClick={goHomePage} onClick={()=>{
-                DoneClick(name, year, month, weight, avatar)
-            }}>Done</Done>
+
         </TopBar>
         <Avatar>
             <div>
@@ -138,46 +131,54 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
                 <Edit src={editicon} onClick={EditClick}></Edit>
             </div>
         </Avatar>
-        <Info>
-            {/* Name info box */}
-            <InfoBox>
-                <Title>Name</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.name} type="text" onChange={(e)=>{
-        setName(e.target.value);
-      }}></InfoEdit>)}
-            </InfoBox>
+        <form>
+            <Info>
+                {/* Name info box */}
+                <InfoBox>
+                    <Title>Name</Title>
+                    {fakedb.map(o=><InfoEdit placeholder={o.name} type="text" onChange={(e)=>{
+            setName(e.target.value);
+        }}></InfoEdit>)}
+                </InfoBox>
 
-            <HorizontalRule></HorizontalRule>
+                <HorizontalRule></HorizontalRule>
 
-            {/* Weight info box */}
-            <InfoBox>
-                <Title>Weight</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.weight} type="text" onChange={(e)=>{
-        setWeight(e.target.value);
-      }}></InfoEdit>)}
-            </InfoBox>
+                {/* Weight info box */}
+                <InfoBox>
+                    <Title>Weight</Title>
+                    {fakedb.map(o=><InfoEdit placeholder={o.weight} type="text" onChange={(e)=>{
+            setWeight(e.target.value);
+        }}></InfoEdit>)}
+                </InfoBox>
 
-            <HorizontalRule></HorizontalRule>
+                <HorizontalRule></HorizontalRule>
 
-            {/* Age info box */}
-            <InfoBox>
-                <Title>Year</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.year} type="text" onChange={(e)=>{
-        setYear(e.target.value);
-      }}></InfoEdit>)}
-            </InfoBox>
+                {/* Age info box */}
+                <InfoBox>
+                    <Title>Year</Title>
+                    {fakedb.map(o=><InfoEdit placeholder={o.year} type="text" onChange={(e)=>{
+            setYear(e.target.value);
+        }}></InfoEdit>)}
+                </InfoBox>
 
-            <HorizontalRule></HorizontalRule>
+                <HorizontalRule></HorizontalRule>
 
-            <InfoBox>
-                <Title>Month</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.month} type="text" onChange={(e)=>{
-        setMonth(e.target.value);
-      }}></InfoEdit>)}
-            </InfoBox>
+                <InfoBox>
+                    <Title>Month</Title>
+                    {fakedb.map(o=><InfoEdit placeholder={o.month} type="text" onChange={(e)=>{
+            setMonth(e.target.value);
+        }}></InfoEdit>)}
+                </InfoBox>
 
-            <HorizontalRule></HorizontalRule>
-        </Info>
+                <HorizontalRule></HorizontalRule>
+
+                <Done type="submit"  onClick={()=>{
+                    DoneClick();
+                }}></Done>
+            </Info> 
+
+        </form>
+
     </Container>
 }
 

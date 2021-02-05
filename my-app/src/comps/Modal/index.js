@@ -49,6 +49,7 @@ const HR = styled.hr`
 
 const TextCont = styled.div`
 font-size: 20px;
+cursor: pointer;
 `;
 
 const Modal = ({most, least, handleClose, clickLeast, clickMost}) => {

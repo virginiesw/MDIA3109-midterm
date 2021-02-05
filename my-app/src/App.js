@@ -1,11 +1,11 @@
 import './App.scss';
-import FilterComp from './comps/FilterComp';
+import HomePage from './pages/home';
 
 function App() {
   return (
     <div className="App">
         Murphy is a super star
-        <FilterComp />
+        <HomePage />
     </div>
   );
 }
