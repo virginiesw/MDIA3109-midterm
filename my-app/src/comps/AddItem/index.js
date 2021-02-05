@@ -8,6 +8,7 @@ const Container = styled.div`
 // flex-direction: column-reverse;
 position: relative;
 margin-right: 30px;
+margin-bottom: 10px;
 `;
 
 const AddButton = styled.div`

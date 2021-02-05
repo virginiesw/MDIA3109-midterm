@@ -53,7 +53,6 @@ const ImgCont = styled.div`
     border: 10px solid white;
     z-index: 10;
     position: relative;
-    border: 6px solid #CCD9DF;
 `;
 
 const Img = styled.img`

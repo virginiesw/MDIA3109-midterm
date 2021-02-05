@@ -179,7 +179,8 @@ const MainPage = () => {
         <div>
             {food.map(o => {
                 return <Indicator
-                    text={o.meal} />
+                    text={o.id}
+                    />
             })}
         </div>
         {/* <div>{currentDate}</div> */}
