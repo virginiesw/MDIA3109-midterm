@@ -25,8 +25,7 @@ const Cancel = styled.text`
     cursor: pointer;
 `;
 
-const Done = styled.input`
-    margin-top:2vw;
+const Done = styled.button`
     color:#44DDFF;
     background-color:#004476;
     border:none;
@@ -119,7 +118,11 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
     return <Container>
         <TopBar>
             <Cancel onClick={homeClick}>Cancel</Cancel>
-
+    
+            <Done onClick={()=>{
+                    DoneClick(name, weight, year, month)
+                }}>Done
+            </Done>
         </TopBar>
         <Avatar>
             <div>
@@ -132,7 +135,6 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
                 <Edit src={editicon} onClick={EditClick}></Edit>
             </div>
         </Avatar>
-        <form>
             <Info>
                 {/* Name info box */}
                 <InfoBox>
@@ -173,12 +175,7 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
 
                 <HorizontalRule></HorizontalRule>
 
-                <Done type="submit"  onClick={()=>{
-                    DoneClick();
-                }}></Done>
             </Info> 
-
-        </form>
 
     </Container>
 }
