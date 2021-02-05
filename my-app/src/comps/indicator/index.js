@@ -3,8 +3,6 @@ import close from '../../img/close.png';
 import styled from 'styled-components';
 import "./indicator.css";
 
-// const meals = require("../../mealData.json");
-
 // const Container = styled.div`
 
 // display:${props => props.checked ? "hidden" : "inline-flex"};
