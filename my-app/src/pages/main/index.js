@@ -191,13 +191,12 @@ const MainPage = () => {
         
         <div className="addComp"><AddItem/></div> 
         
-
+           <div>
             {food.map(o => {
                 return <Indicator
                     text={o.meal} />
             })}
         </div>
-        {/* <div>{currentDate}</div> */}
         <div className="addComp"><AddItem /></div>
 
     </Container>
