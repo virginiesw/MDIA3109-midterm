@@ -86,6 +86,7 @@ const MainPage = () => {
         }  
         console.log("food filtered least", copy)
         setSortFoodLeast(!sortFoodLeast)
+        setSortFoodMost(!sortFoodMost)
         setFood(copy)
     }
 
@@ -96,6 +97,7 @@ const MainPage = () => {
         }  
         console.log("food filtered most", copy)
         setSortFoodMost(!sortFoodMost)
+        setSortFoodLeast(!sortFoodLeast)
         setFood(copy)
     }
 
@@ -194,22 +196,22 @@ const MainPage = () => {
 export default MainPage;
 
 function sortMostComplete(a,b){
-    // if (a.mComplete > b.mComplete){
+    // if (a.completion > b.completion){
     //     return 1
-    // } else if (a.mComplete < b.mComplete){
+    // } else if (a.completion < b.completion){
     //     return -1
     // } else {
     //     return 0
     // }
-    return b.mComplete - a.mComplete
+    return b.completion - a.completion
 }
 function sortLeastComplete(a,b){
-    // if (a.mComplete > b.mComplete){
+    // if (a.completion > b.completion){
     //     return -1
-    // } else if (a.mComplete < b.mComplete){
+    // } else if (a.completion < b.completion){
     //     return 1
     // } else {
     //     return 0
     // }
-    return a.mComplete - b.mComplete
+    return a.completion - b.completion
 }
