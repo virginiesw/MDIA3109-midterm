@@ -223,24 +223,27 @@ class Indicator extends React.Component {
     //     this.setState(prevState => ({ percentage: prevState.percentage + 25 }))
     // }
 
-    
+
 
 
     render() {
 
-        const {mealname, perc, clickLess, clickMore, id, onClick} = this.props;
+        const { mealname, perc, clickLess, clickMore, id, onClick } = this.props;
         return (
-            <div onClick={()=>
+            <div onClick={() =>
                 onClick(id)} className="container">{id}
+                <img className="closeimg" onClick={() => {
+                    // delete meal
+                }} src={close}></img>
                 <h2> {this.props.mealname}</h2>
                 <div className="bar">
-                        <button onClick={clickMore}>
-                            <img style={{ width: "30px", objectFit: "cover"}} src="img/empty.png" />
-                        </button>  
-                         <ProgressBar percentage={perc} />
-                        <button onClick={clickLess}>
-                            <img style={{ width: "30px"}} src="img/completed.png" />
-                        </button>
+                    <button className="button" onClick={clickMore}>
+                        <img className="bowlicon" src="img/empty.png" alt="ate more" />
+                    </button>
+                    <ProgressBar percentage={perc} />
+                    <button className="button" onClick={clickLess}>
+                        <img className="bowlicon" src="img/completed.png" alt="ate less" />
+                    </button>
                 </div>
             </div>
         )
@@ -262,8 +265,8 @@ const Filler = (props) => {
 Indicator.defaultProps = {
     mealname: "breakfast",
     perc: 25,
-    clickLess:()=>{},
-    clickMore:()=>{},
+    clickLess: () => { },
+    clickMore: () => { },
     id: null
 }
 

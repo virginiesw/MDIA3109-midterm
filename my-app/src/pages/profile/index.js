@@ -7,7 +7,6 @@ const fakedb = require("../../profileData.json");
 const Container = styled.div`
 width: 414px;
 height: 896px;
-border: 1px solid #DAD;
 `;
 
 

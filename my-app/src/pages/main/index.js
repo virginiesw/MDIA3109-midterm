@@ -12,7 +12,7 @@ import FilterComp from '../../comps/FilterComp';
 const Container = styled.div`
 background-color: #CCD9DF;
 width: 367px;
-height: 594px;
+height: 620px;
 border-radius: 12px;
 display: flex;
 flex-direction: column;
@@ -42,15 +42,15 @@ font-family: 'Roboto', sans-serif;
 
 .addComp {
  margin-left: 31px;
- bottom: 10px;
+ bottom: 15px;
  position: absolute;
  font-weight: bold;
 }
 
 .food {
     overflow: scroll;
-    height: 400px;
-    white-space: nowrap
+    height: 450px;
+    white-space: nowrap;
 }
 
 `;

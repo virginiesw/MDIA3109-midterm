@@ -8,7 +8,6 @@ const Container = styled.div`
 // flex-direction: column-reverse;
 position: relative;
 margin-right: 30px;
-margin-bottom: 10px;
 
 .open {
     display: none;
@@ -20,7 +19,7 @@ margin-bottom: 10px;
 `;
 
 const AddButton = styled.div`
-min-width: 311px;
+min-width: 340px;
 max-width: 500px;
 padding: 0.2%;
 min-height: 50px;
@@ -60,8 +59,10 @@ border-radius: 10px;
 box-shadow: 0px -2px 5px #565656;
 padding-top: 20px;
 padding-bottom: 20px;
+margin-bottom: -10px;
 position: relative;
 background-color: white;
+margin-left: 15px;
 `;
 
 const CloseIcon = styled.img`
