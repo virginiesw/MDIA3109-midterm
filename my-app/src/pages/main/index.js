@@ -87,7 +87,7 @@ const MainPage = () => {
             copy.sort(sortLeastComplete)    
         }  
         console.log("food filtered least", copy)
-        setSortFoodLeast(!sortFoodLeast)
+        // setSortFoodLeast(!sortFoodLeast)
         setSortFoodMost(!sortFoodMost)
         setFood(copy)
     }
@@ -99,7 +99,7 @@ const MainPage = () => {
         }  
         console.log("food filtered most", copy)
         setSortFoodMost(!sortFoodMost)
-        setSortFoodLeast(!sortFoodLeast)
+        // setSortFoodLeast(!sortFoodLeast)
         setFood(copy)
     }
 
