@@ -54,13 +54,12 @@ const ImgCont = styled.div`
     border: 10px solid white;
     z-index: 10;
     position: relative;
-    border: 6px solid #CCD9DF;
 `;
 
 const Img = styled.img`
 width: 100%;
 height: 100%;
-object-fit: stretch;
+object-fit: scale-down;
 `;
 
 const Edit = styled.img`

@@ -45,6 +45,7 @@ font-family: 'Roboto', sans-serif;
  position: absolute;
  font-weight: bold;
 }
+
 `;
 
 
@@ -181,7 +182,7 @@ const MainPage = () => {
         <div>
         {food.map(o=>{
         return <Indicator  
-             text={o.mComplete}> 
+             text={o.meal}> 
          </Indicator>})}
         </div>
         {/* <div>{currentDate}</div> */}
