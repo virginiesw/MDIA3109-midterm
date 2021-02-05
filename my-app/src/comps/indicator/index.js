@@ -82,10 +82,12 @@ cursor: pointer;
 
 const CloseImg = styled.img`
 width: 20px;
-margin: 5px;
+margin-left: 8px;
+margin-top: 8px;
 position: absolute;
 top: 0;
 left: 0;
+cursor: pointer;
 `;
 
 
