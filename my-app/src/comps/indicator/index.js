@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import close from '../../img/close.png';
 
 import styled from 'styled-components';
 
@@ -21,6 +22,7 @@ justify-content: center;
 align-slef:center;
 font-size:24px;
 margin-bottom: 12px;
+position: relative;
 
 .topcont{
     display:flex;
@@ -28,6 +30,7 @@ margin-bottom: 12px;
         .text{
             color:${props => props.expanded ? "#FF9E44" : "#FFFFF"};
         }
+
 `;
 
 const TopCont = styled.div`
@@ -77,6 +80,14 @@ align-self:center;
 cursor: pointer;
 `;
 
+const CloseImg = styled.img`
+width: 20px;
+margin: 5px;
+position: absolute;
+top: 0;
+left: 0;
+`;
+
 
 
 const Indicator = ({ text, expand }) => {
@@ -112,12 +123,17 @@ const Indicator = ({ text, expand }) => {
     }, [expanded3])
 
     return <Container checked={checked}  >
+         <CloseImg onClick={() => {
+                    setChecked(false);
+                }}  src={close}></CloseImg>
         <TopCont >
             <div className="topcont" >
-
+{/* 
                 <div className="close" onClick={() => {
                     setChecked(false);
-                }} ><img src="img/close.png" /></div>
+                }} >
+                   
+                    </div> */}
 
                 <div className="text" expanded={expanded} onClick={() => {
                     setExpanded(!expanded);
