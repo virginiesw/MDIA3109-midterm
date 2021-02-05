@@ -169,6 +169,7 @@ const Indicator = ({ text, expand }) => {
 
 
 Indicator.defaultProps = {
+
     text: "Dinner",
     expanded: true,
     expanded1: true,

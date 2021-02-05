@@ -32,7 +32,7 @@ const ProfileEditPage = ({pageHide}) =>{
  
 
     return <Container>
-        <EditProfile homeClick={pageHide} DoneClick={() => {HandleInsert() ; pageHide()}} />
+        <EditProfile homeClick={pageHide} DoneClick={HandleInsert} />
     </Container>
 }
 
