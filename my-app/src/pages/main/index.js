@@ -23,6 +23,7 @@ font-family: 'Roboto', sans-serif;
 .filterComp {
     position: absolute;
     right: 0;
+    z-index: 10;
 }
 
 
@@ -179,7 +180,7 @@ const MainPage = () => {
         <div className="title" onClick={filterByDate}>Feeding Schedule</div>
         <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
-        <div>
+        <div className="food">
         {food.map(o=>{
         return <Indicator  
              text={o.meal}> 
