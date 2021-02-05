@@ -107,6 +107,7 @@ const MainPage = () => {
     const [sortFoodLeast, setSortFoodLeast] = useState(true); //for filter food by least complete
     const [sortFoodMost, setSortFoodMost] = useState(true); //for filtering food by most complete
     const [sorted, setSorted] = useState(true);
+    const [selectedId, setSelected] = useState(null);
     const [currentDate, setCurrentDate] = useState(moment().format("DD/MM/YYYY")); //for filtering by date
     const [num, setNum] = useState(0) //used in junction with currentDate
 
@@ -184,12 +185,14 @@ const MainPage = () => {
     const handleMore = () => {
       //  var resp = meals//this will modify db input, grab meal id an update accordingly
       //  resp.perc(+ 25)
-  
+      alert("more")
     }
 
     const handleLess = () => {
       //  var resp = meals //this will modify db input, grab meal id an update accordingly
      //   resp.perc(- 25)
+    //  console.log(id);
+     alert("less")
     }
 
     // const filterByDate = () => { //this filters by meal of most completetion 
@@ -254,7 +257,10 @@ const MainPage = () => {
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div className="food">
         {food.map(o=>{
-        return <Indicator clickLess={handleLess} clickMore={handleMore}
+        return <Indicator onClick={(id)=>{
+            console.log("id", id) //grabbing id for now
+            setSelected(id);
+        }} clickLess={handleLess} clickMore={handleMore}
              mealname={o.meal} perc={o.perc}> 
          </Indicator>})}
         </div>
