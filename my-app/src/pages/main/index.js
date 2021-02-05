@@ -45,6 +45,7 @@ font-family: 'Roboto', sans-serif;
  position: absolute;
  font-weight: bold;
 }
+
 `;
 
 
@@ -179,11 +180,10 @@ const MainPage = () => {
         <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div>
-            {food.map(o => {
-                return <Indicator
-                    text={o.id}
-                    />
-            })}
+        {food.map(o=>{
+        return <Indicator  
+             text={o.meal}> 
+         </Indicator>})}
         </div>
         {/* <div>{currentDate}</div> */}
         <div className="addComp"><AddItem/></div>

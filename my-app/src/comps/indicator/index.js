@@ -10,7 +10,7 @@ display:${props => props.checked ? "hidden" : "inline-flex"};
 opacity:${props => props.checked ? 1 : 0};
 display:flex;
 flex-direction:column;
-
+margin-top: 8px;
 max-height:	70px;
 max-width: 311px;
 border: 1px solid black;

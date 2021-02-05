@@ -59,7 +59,7 @@ const ImgCont = styled.div`
 const Img = styled.img`
 width: 100%;
 height: 100%;
-object-fit: stretch;
+object-fit: scale-down;
 `;
 
 const Edit = styled.img`
