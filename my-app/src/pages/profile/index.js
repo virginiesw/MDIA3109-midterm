@@ -20,7 +20,7 @@ const ProfileEditPage = ({pageHide}) =>{
 
 
         //this pushes the current data to the database. 
-        //This will be modified with a post request to our endpoint once the database is set up
+        //This will be modified with a patch request to update data in our endpoint once the database is set up
         //for now, use fake database as example, doesn't really work, but it sets the layout
         var resp = fakedb.push({id:1, avatar: avatar, name: name, weight: weight, year:year, month: month})
         var resptest = fakedb;
