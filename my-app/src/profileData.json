@@ -1,8 +1,8 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "name": "Murphy",
-        "weight": "95 lbs",
+        "weight": "95",
         "year": "3",
         "month": "7",
         "avatar": "../../img/murphy.png"
