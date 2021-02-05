@@ -102,11 +102,13 @@ const InfoEdit = styled.input`
 
 const HorizontalRule = styled.hr`
     width:77%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 `;
 
 const fakedb = require('../../profileData.json')
 
-const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
+const EditProfile = ({EditClick, homeClick, DoneClick, submitClick}) => {
 
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
@@ -119,7 +121,7 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
             <Cancel onClick={homeClick}>Cancel</Cancel>
     
             <Done onClick={()=>{
-                    DoneClick(name, weight, year, month)
+                    DoneClick(); submitClick(name, weight, year, month);
                 }}>Done
             </Done>
         </TopBar>
@@ -172,8 +174,6 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
         }}></InfoEdit>)}
                 </InfoBox>
 
-                <HorizontalRule></HorizontalRule>
-
             </Info> 
 
     </Container>
@@ -184,6 +184,7 @@ EditProfile.defaultProps = {
     homeClick:()=>{},
     DoneClick:()=>{},
     goHomePage:()=>{},
+    submitClick:()=>{},
 }
 
 export default EditProfile;
