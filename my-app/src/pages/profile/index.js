@@ -26,13 +26,14 @@ const ProfileEditPage = ({pageHide}) =>{
         var resptest = fakedb;
         console.log(resp)
         console.log("data", resptest);
+        
     }
 
-
+    // DoneClick={()=> { HandleInsert(); pageHide(); }}
  
 
     return <Container>
-        <EditProfile homeClick={pageHide} DoneClick={HandleInsert} />
+        <EditProfile homeClick={pageHide} DoneClick={pageHide} submitClick={HandleInsert}/>
     </Container>
 }
 
