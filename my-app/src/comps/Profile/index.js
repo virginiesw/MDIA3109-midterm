@@ -27,7 +27,7 @@ const InfoCont = styled.div`
 flex: 1;
 display: flex;
 width: 200px;
-justify-content: space-between;
+justify-content: space-around;
 `;
 const ProfileCont = styled.div`
 `;
@@ -71,7 +71,7 @@ margin-bottom: 15px;
 `;
 
 const LineCont = styled.div`
-height: 55px;
+height: 40px;
 width: 1px;
 background-color: white;
 `;
@@ -80,6 +80,7 @@ const BigCont = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-left: -30px;
 `;
 
 
