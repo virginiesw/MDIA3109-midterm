@@ -2,7 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 import edit from '../../img/edit.png';
-import murphy from '../EditProfile/imgs/murphy.png'
+import murphy from '../EditProfile/imgs/murphy.png';
+import ProfilePicChanger from '../ProfilePicChanger';
 
 const Container = styled.div`
 display:flex;

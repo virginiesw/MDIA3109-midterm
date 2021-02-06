@@ -219,14 +219,14 @@ class Indicator extends React.Component {
                 <img className="closeimg" onClick={() => {
                     // deleting meals will be an axios delete once the real DB is implemented
                 }} src={close}></img>
-                <h2> {this.props.mealname}</h2>
+                <h2> {mealname}</h2>
                 <div className="bar">
-                    <button id="button" src="img/empty.png" onClick={clickMore}>
-                        <img className="bowlicon" src="img/empty.png" alt="ate more" />
+                    <button id="button" src="img/empty.png" onClick={() => {clickLess(mealname)}}>
+                        <img className="bowlicon" src="img/completed.png" alt="ate more" />
                     </button>
                     <ProgressBar percentage={perc} />
-                    <button id="button" onClick={clickLess}>
-                        <img className="bowlicon" src="img/completed.png" alt="ate less" />
+                    <button id="button" onClick={() => {clickMore(mealname)}}>
+                        <img className="bowlicon" src="img/empty.png" alt="ate less" />
                     </button>
                 </div>
             </div>

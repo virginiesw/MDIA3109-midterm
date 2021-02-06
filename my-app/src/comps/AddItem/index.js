@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import close from '../../img/close.png';
 
@@ -104,9 +104,9 @@ margin-left: -30px;
 //                     ?    
 //                     <IconCont>
 //                             <AddMenu>
-                         
+
 //                                 <CloseIcon onClick={() => this.setState({ showing: !showing })} src={close} width="20px"></CloseIcon>
-                
+
 //                             <MenuText onClick={this.props.handleBreakfast} setMeal="breakfast">Breakfast</MenuText>
 //                             <TextLine></TextLine>
 //                             <MenuText onClick={this.props.handleLunch}  setMeal="lunch">Lunch</MenuText>
@@ -120,11 +120,11 @@ margin-left: -30px;
 //                 }      
 //         </Container>  
 //         )
-   
+
 //     }   
 // }
 
-const AddItem = ({handleAdd}) =>{
+const AddItem = ({ handleAddB, handleAddL, handleAddD, handleAddS  }) => {
 
 
     const [open, setOpen] = useState(true);
@@ -136,7 +136,7 @@ const AddItem = ({handleAdd}) =>{
         console.log("meal name 1", mealname)
     }
 
-   const handleLunch = (event) => {
+    const handleLunch = (event) => {
         setMealname(event.target.textContent);
         console.log("meal name 1", mealname)
     }
@@ -154,40 +154,51 @@ const AddItem = ({handleAdd}) =>{
 
 
     return <Container>
-         <AddButton onClick={() => {
-                   setOpen(!open);
-              }} >Add Item +</AddButton>  
-         <div className={open ? "open" : null}>
-            <IconCont onClick={handleAdd(mealname)}>
+        <AddButton onClick={() => {
+            setOpen(!open);
+        }} >Add Item +</AddButton>
+        <div className={open ? "open" : null}>
+            <IconCont>
                 <AddMenu>
-                <CloseIcon onClick={() => {
-                   setOpen(!open);
-              }}
-              src={close} width="20px">
-               
-              </CloseIcon>
-                <MenuText onClick={event => handleBreakfast(event)}>Breakfast</MenuText>
-                <TextLine></TextLine>
-                <MenuText onClick={event => handleLunch(event)} >Lunch</MenuText>
-                <TextLine></TextLine>
-                <MenuText onClick={event => handleDinner(event)}>Dinner</MenuText>
-                <TextLine></TextLine>
-                <MenuText onClick={event => handleTreat(event)}>Treat</MenuText>
-            </AddMenu>  
-        </IconCont>    
-         </div>
-    
+                    <CloseIcon onClick={() => {
+                        setOpen(!open);
+                    }}
+                        src={close} width="20px">
+
+                    </CloseIcon>
+                    <div onClick={handleAddB(mealname)}>
+                        <MenuText onClick={event => handleBreakfast(event)}>Breakfast</MenuText>
+                    </div>
+                    <TextLine></TextLine>
+                    <div onClick={handleAddL(mealname)}>
+                        <MenuText onClick={event => handleLunch(event)} >Lunch</MenuText>
+                    </div>
+                    <TextLine></TextLine>
+                    <div onClick={handleAddD(mealname)}>
+                        <MenuText onClick={event => handleDinner(event)}>Dinner</MenuText>
+                    </div>
+                    <TextLine></TextLine>
+                    <div onClick={handleAddS(mealname)}>
+                        <MenuText onClick={event => handleTreat(event)}>Treat</MenuText>
+                    </div>
+                </AddMenu>
+            </IconCont>
+        </div>
+
     </Container>
-    
+
 }
 
 
 
 AddItem.defaultProps = {
-        handleAdd:()=>{}
+    handleAddB: () => { },
+    handleAddL: () => { },
+    handleAddD: () => { },
+    handleAddS: () => { }
     // HandleSnack:()=>{},
     // meal: "dinner",
 
-    }
+}
 
 export default AddItem;
