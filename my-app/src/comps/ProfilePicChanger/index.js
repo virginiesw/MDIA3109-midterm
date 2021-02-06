@@ -1,33 +1,43 @@
 import React, { Component } from 'react'
 import 'antd/dist/antd.css';
 import { Avatar } from 'antd';
-import { Button } from 'antd';
+// import { Button } from 'antd';
 import close from '../../img/close.png';
 import './ppchanger.css'
 // import './App.scss';
 import image from '../../img/add.png';
 import styled from 'styled-components';
-import edit from '../../img/editblack.png';
+import edit from '../../img/edit.png';
+// import img from '../../img/dogpic1.jpg';
+// import img from '../../img/dogpic1.jpg';
+import { SELECTION_NONE } from 'antd/lib/table/hooks/useSelection';
 
-const Image = styled.img``;
+const Image = styled.img`
+
+`;
 const Modal = styled.div`
 display: flex;
 flex-direction: column;
 flex-wrap: wrap;
-height: 400px;
+height: 200px;
 background-color: #DAD;
 position: absolute;
-top: 100px;
-left: -150px;
+top: 150px;
+left: -90px;
+
 
 `;
 
-const CloseIcon = styled.img`
-position: absolute;
-top: 0;
-right: 0;
-margin: 10px;
-`;
+// const CloseIcon = styled.img`
+// position: absolute;
+// top: 0;
+// right: 0;
+// margin: 10px;
+// `;
+
+// const button = styled.div`
+// background-color:#DAD
+// `;
 
 
 //   constructor(props) {
@@ -120,20 +130,39 @@ class ProfilePicChanger extends Component {
     images: [
       {
         id: 1,
-        img: "https://images.pexels.com/photos/753873/pexels-photo-753873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=200"
+        img: "https://i.pinimg.com/564x/39/05/01/390501f89865f4d4faf94b15e5058e04.jpg",
       },
       {
         id: 2,
-        img: "https://images.pexels.com/photos/679277/pexels-photo-679277.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=200"
+        img: "https://i.pinimg.com/564x/54/82/bd/5482bdf0170c7016387b43eccac50f82.jpg"
+
       },
       {
         id: 3,
-        img: "https://images.pexels.com/photos/5486/bird-s-eye-view-cars-crossing-crossroad.jpg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=200"
+        img: " https://www.outsourcecreativeworks.com/wp-content/uploads/2019/05/PET-ILLUSTRATION_01.jpg"
       },
       {
         id: 4,
-        img: "https://images.pexels.com/photos/914128/pexels-photo-914128.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=200"
+        img: "https://i.pinimg.com/564x/07/94/2a/07942ae5b2f9e3fca43581fd02204e04.jpg"
+      },
+      {
+        id: 5,
+        img: "https://i.pinimg.com/564x/00/fd/20/00fd2097ab375a071704abc4305b4e96.jpg"
+      },
+      {
+        id: 6,
+        img: "https://i.pinimg.com/564x/45/fb/0b/45fb0b7038ab2c18c86e87956e3b6b78.jpg"
+      },
+      {
+        id: 7,
+        img: "https://i.pinimg.com/564x/c9/94/2c/c9942c37e2d7275e87a87306c40b74c8.jpg"
+      },
+      {
+        id: 8,
+        img: "https://i.pinimg.com/564x/a6/04/e7/a604e7813f03bdc6b6d0f05c67fc7a77.jpg"
       }
+   
+   
     ],
     selectedImageIndex: 0
   };
@@ -161,20 +190,26 @@ class ProfilePicChanger extends Component {
   render() {
     const { showing } = this.state;
     const sideImages = this.state.images.map((image, index) => (
-      <img key={image.id} src={image.img} alt="Thumbnail Image" data-index={index} />
+      <img key={image.id} src={image.img} alt="Thumbnail Image" data-index={index} width="100px" height="100px" />
     ));
     return (
       <div className="ProfilePicChanger">
-        <Button className="button" type="primasry" onClick={() => this.setState({ showing: !showing })}>
-          <Image className="imgicon" src={edit}></Image>
-        </Button>
+        {/* <Button className="button"
+         onClick={() => this.setState({ showing: !showing })}> */}
+        <Image className="imgicon" src={edit}
+          className="button" onClick={() => this.setState({ showing: !showing })}
+        ></Image>
+        {/* </Button> */}
         <div className="innerCont">
           <div className="imageSlider">
-            <div onClick={this.onClickHandler} className="sideImages">
+            <div onClick={this.onClickHandler} className="sideImages"  >
               {showing
                 ?
-                <Modal onClick={() => this.setState({ showing: !showing })}>
+                <Modal
+
+                  onClick={() => this.setState({ showing: !showing })}>
                   {sideImages}
+
                 </Modal>
                 : null
               }

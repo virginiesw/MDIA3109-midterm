@@ -32,8 +32,7 @@ const ProfileEditPage = ({pageHide}) =>{
  
 
     return <Container>
-        <Indicator/>
-        <Indicator/>
+    
         <EditProfile homeClick={pageHide} DoneClick={() => {HandleInsert() ; pageHide()}} />
     </Container>
 }

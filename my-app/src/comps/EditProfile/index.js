@@ -12,11 +12,16 @@ const Container = styled.div`
     max-height: 1000px;
     background-color:#004476;
     margin:0;
+ 
 
     .avatar {
         display: flex;
         justify-content:center;
         margin-top:5%;
+        // z-index: 10;
+        z-index: 10;
+        position: relative;
+       
     }
 `;
 
@@ -96,6 +101,7 @@ const InfoBox = styled.div`
     margin-top:2vw;
     display:flex;
     align-items:center;
+  
 `;
 
 const InfoEdit = styled.input`
@@ -152,6 +158,9 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
         </div>
       
         <Info>
+        {/* <div className="avatar">
+              <ProfilePicChanger />
+        </div> */}
             {/* Name info box */}
             <InfoBox>
                 <Title>Name</Title>
