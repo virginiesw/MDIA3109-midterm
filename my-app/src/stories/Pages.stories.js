@@ -2,7 +2,8 @@ import React,{useState} from 'react';
 import EditProfile from '../comps/EditProfile';
 import MainPage from '../pages/main';
 import ProfileEditPage from '../pages/profile';
-import HomePage from '../pages/home'
+import HomePage from '../pages/home';
+
 
 export default {
     title: 'Pages',

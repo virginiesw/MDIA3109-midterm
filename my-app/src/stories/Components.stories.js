@@ -6,6 +6,8 @@ import Profile from '../comps/Profile';
 // import Modal from '../comps/Modal';
 import DateComp from '../comps/DateComp';
 import FilterComp from '../comps/FilterComp';
+import ProfilePicChanger from '../comps/ProfilePicChanger';
+// import PicUploader from '../comps/PicUploader';
 
 export default {
   title: 'Components',
@@ -16,6 +18,7 @@ export default {
   // component: Modal,
   component: DateComp,
   component: FilterComp,
+  component: ProfilePicChanger,
 };
 
 
@@ -26,5 +29,5 @@ export const MyProfile= () =>  <Profile />
 // export const MyModal= () => <Modal />
 export const MyDateComp= () => <DateComp />
 export const MyFilterComp= () => <FilterComp />
-
-
+export const MyProfileChanger= () => <ProfilePicChanger />
+// export const MyUploader= () => <PicUploader />

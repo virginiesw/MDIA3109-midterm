@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import ProfilePicChanger  from '../ProfilePicChanger';
+import murphy from './imgs/murphy.png';
 import editicon from './imgs/editIcon.png';
 
 const Container = styled.div`
@@ -9,6 +11,17 @@ const Container = styled.div`
     max-height: 1000px;
     background-color:#004476;
     margin:0;
+ 
+
+    .avatar {
+        display: flex;
+        justify-content:center;
+        margin-top:5%;
+        // z-index: 10;
+        z-index: 10;
+        position: relative;
+       
+    }
 `;
 
 const TopBar = styled.div`
@@ -91,6 +104,7 @@ const InfoBox = styled.div`
     margin-top:20px;
     display:flex;
     align-items:center;
+  
 `;
 
 const InfoEdit = styled.input`
@@ -126,7 +140,7 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
             }}>Done
             </Done>
         </TopBar>
-        <Avatar>
+        {/* <Avatar>
             <div>
                 <ImgCont>
                     {fakedb.map(o => <Img src={o.avatar} onChange={(e) => {
@@ -136,8 +150,15 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
 
                 {/* <Edit src={editicon} onClick={EditClick}></Edit> */}
             </div>
-        </Avatar>
+        </Avatar> */}
+        <div className="avatar">
+              <ProfilePicChanger />
+        </div>
+      
         <Info>
+        {/* <div className="avatar">
+              <ProfilePicChanger />
+        </div> */}
             {/* Name info box */}
             <InfoBox>
                 <Title>Name</Title>

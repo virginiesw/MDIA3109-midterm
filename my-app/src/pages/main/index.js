@@ -263,10 +263,26 @@ const MainPage = () => {
         }} clickLess={handleLess} clickMore={handleMore}
              mealname={o.meal} perc={o.perc}> 
          </Indicator>})}
+
+ 
+        </div>
+        
+        <div className="addComp"><AddItem/></div> 
+        
+           <div>
+            {food.map(o => {
+                return <Indicator
+                    text={o.meal} />
+            })}
+        </div>
+        <div className="addComp"><AddItem /></div>
+
+
         </div>
         {/* <div>{currentDate}</div> */}
         <div className="addComp" 
         onClick={addMeal}><AddItem handleAdd={addMeal}/></div>
+
     </Container>
 }
 
