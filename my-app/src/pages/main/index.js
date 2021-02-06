@@ -112,36 +112,46 @@ const MainPage = () => {
     const [num, setNum] = useState(0) //used in junction with currentDate
 
     const dateForward = () => { //this moves the date forward one, will be used with filtering by date
+        
         setNum(
             num + 1
+            // (prevState,) => ({
+            //     num: prevState.num + 1
+            // })
         )
         console.log("current number", num)
         setCurrentDate(
             moment().add(num + 1, "days").format("DD/MM/YYYY")
         )
-        console.log(food)
-        var resp = meals
+        var resp = meals //this will be a get request once we hve the API end points
         var filtered = resp.filter((o, i) => {
             return o.date.includes(currentDate);
         })
         setFood(filtered)
-        console.log(filtered);
+        console.log("get food", filtered)
+        console.log("current date on click forward is", currentDate)
     };
+
+
 
     const dateBack = () => { //this moves current date back by one, will be used with filtering by date
         setNum(
-            num - 1
+           num - 1
+            // (prevState,) => ({
+            //     num: prevState.num - 1
+            // })
         )
         console.log("current number", num)
         setCurrentDate(
             moment().add(num - 1, "days").format("DD/MM/YYYY")
         )
-        var resp = meals
+        var resp = meals //this will be a get request once we hve the API end points
         var filtered = resp.filter((o, i) => {
             return o.date.includes(currentDate);
         })
         setFood(filtered)
-        console.log(filtered);
+        console.log("get food", filtered)
+        console.log("current date on click back is", currentDate)
     };
 
 
@@ -178,11 +188,14 @@ const MainPage = () => {
 
     useEffect(() => { //this loads the food from the array on page load. 
         GetFood();
+        dateForward();
+        dateBack();
     }, []);
 
     const filterByDate = () => {
         // console.log("all food", meals)
         console.log(currentDate)
+        setCurrentDate(currentDate)
         // var resp = meals
         // var filtered = resp.includes((o, i) => {
         //     return o.date.includes(currentDate);
@@ -276,6 +289,7 @@ const MainPage = () => {
 
     return <Container>
         <div className="title" onClick={filterByDate}>Feeding Schedule</div>
+        {/* {currentDate} */}
         <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div className="food">
