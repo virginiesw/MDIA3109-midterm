@@ -36,16 +36,7 @@ background-color: #004476;
 
 `;
 
-const fakedb = [
-    {
-        id:1,
-        name:"Murphy",
-        weight:"95",
-        year:"3",
-        month:"7",
-        avatar:"../../img/murphy.png",
-    }
-]
+const fakedb = require('../../profileData.json')
 
 const HomePage = () => {
 
