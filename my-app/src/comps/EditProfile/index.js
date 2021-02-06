@@ -36,11 +36,15 @@ const Cancel = styled.text`
     font-family: sans-serif;
     padding:5%;
     cursor: pointer;
+
+    :hover {
+        filter: drop-shadow(0px 0px 0.5px #FFFFFF);
+      }
 `;
 
 const Done = styled.button`
     color:#44DDFF;
-    background-color:#004476;
+    background: none;
     border:none;
     font-weight: bold;
     font-size: 24px;
@@ -48,6 +52,10 @@ const Done = styled.button`
     font-family: sans-serif;
     padding:5%;
     cursor:pointer;
+
+    :hover {
+        filter: drop-shadow(0px 0px 0.5px #FFFFFF);
+      }
 `;
 
 const Avatar = styled.div`
@@ -102,6 +110,7 @@ const InfoBox = styled.div`
     padding-left:15px;
     margin-bottom:20px;
     margin-top:20px;
+    margin-left: 40px;
     display:flex;
     align-items:center;
   
@@ -109,10 +118,12 @@ const InfoBox = styled.div`
 
 const InfoEdit = styled.input`
     position:absolute;
-    left:140px;
+    left:170px;
     background-color:#CCD9DF;
     padding:20px;;
     border-radius:5px;
+    border: none;
+    outline: none;
 `;
 
 const HorizontalRule = styled.hr`
@@ -195,8 +206,6 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
                     setMonth(e.target.value);
                 }}></InfoEdit>)}
             </InfoBox>
-
-            <HorizontalRule></HorizontalRule>
 
         </Info>
     </Container>

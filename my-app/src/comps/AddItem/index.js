@@ -30,6 +30,10 @@ align-items: center;
 justify-content: center;
 // background-color: white;
 cursor: pointer;
+
+:hover {
+    filter: drop-shadow(0px 0px 1px #999999);
+  }
 `;
 
 const TextLine = styled.div`
@@ -71,6 +75,10 @@ top: 0;
 left: 0;
 margin: 10px;
 cursor: pointer;
+
+:hover {
+    filter: drop-shadow(0px 0px 1px #999999);
+  }
 `;
 
 const IconCont = styled.div`

@@ -24,6 +24,10 @@ const FilterButton = styled.img`
     width: 30px;
     height: 30px;
     cursor: pointer;
+    
+    :hover {
+        filter: drop-shadow(0px 0px 1px #999999);
+      }
 `;
 
 
