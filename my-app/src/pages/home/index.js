@@ -14,6 +14,7 @@ font-family: 'Roboto', sans-serif;
 background-color: #004476;
 
 .mainCont {
+    margin-top: -30px;
     margin-left: 24px;
 }
 
@@ -35,16 +36,7 @@ background-color: #004476;
 
 `;
 
-const fakedb = [
-    {
-        id:1,
-        name:"Murphy",
-        weight:"95",
-        year:"3",
-        month:"7",
-        avatar:"../../img/murphy.png",
-    }
-]
+const fakedb = require('../../profileData.json')
 
 const HomePage = () => {
 

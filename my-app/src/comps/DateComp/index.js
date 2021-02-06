@@ -8,15 +8,20 @@ display:flex;
 
 const LArrow = styled.div`
 cursor: pointer;
+transform: scale(1.5);
+margin-top: -2px;
 `;
 
 const RArrow = styled.div`
 cursor: pointer;
+transform: scale(1.5);
+margin-top: -2px;
 `;
 
 const Date = styled.div`
 margin-right: 20px;
 margin-left: 20px;
+transform: scale(1.2);
 `;
 
 class DateComp extends Component {

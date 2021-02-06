@@ -18,17 +18,23 @@ color: white;
 
 const Icon = styled.img`
 position: absolute;
-top: 0;
-right: 0;
+top: 10px;
+right: 10px;
 margin: 10px;
 cursor: pointer;
+
+:hover {
+    filter: drop-shadow(0px 0px 5px #888888);
+}
 `;
+
 const InfoCont = styled.div`
 flex: 1;
 display: flex;
 width: 200px;
-justify-content: space-between;
+justify-content: space-around;
 `;
+
 const ProfileCont = styled.div`
 `;
 
@@ -42,13 +48,12 @@ const ImgCont = styled.div`
     border-radius: 100%;
     border: 10px solid white;
     z-index: 10;
-    border: 6px solid #CCD9DF;
 `;
 
 const Img = styled.img`
 width: 100%;
 height: 100%;
-object-fit: stretch;
+object-fit: contain;
 `;
 
 const InnerCont = styled.div`
@@ -72,7 +77,7 @@ margin-bottom: 15px;
 `;
 
 const LineCont = styled.div`
-height: 55px;
+height: 40px;
 width: 1px;
 background-color: white;
 `;
@@ -81,55 +86,56 @@ const BigCont = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-left: -30px;
 `;
 
 
 
-const Profile = ({name,imgurl, year, month,weight, clickHome, hideHome}) => {
+const Profile = ({ name, imgurl, year, month, weight, clickHome, hideHome }) => {
 
 
 
 
-    
+
     return <Container >
-        <Icon onClick={hideHome}  onClick={clickHome} src={edit}></Icon>
+        <Icon onClick={hideHome} onClick={clickHome} src={edit}></Icon>
         <InnerCont>
-            <ImgCont>  
+            <ImgCont>
                 <Img src={imgurl}></Img>
             </ImgCont>
             <ProfileCont >
                 <BigCont>
                     <NameCont>
-                    {name}
+                        {name}
                     </NameCont>
                     <InfoCont>
                         <AgeCont>
-                            Age <br/>
+                            Age <br />
                             {year} y {month} m
                         </AgeCont>
-                        <LineCont></LineCont> 
+                        <LineCont></LineCont>
                         <WeightCont>
-                            Weight <br/>
+                            Weight <br />
                             {weight} lbs
                         </WeightCont>
-                    </InfoCont>        
+                    </InfoCont>
                 </BigCont>
-     
-            </ProfileCont>  
+
+            </ProfileCont>
         </InnerCont>
-     </Container>
+    </Container>
 }
 
 
 Profile.defaultProps = {
-    name:"default name",
+    name: "default name",
     // imgurl: "../../img/murphy.png",
     year: "x",
     month: "y",
-    weight:"x",
-    clickHome:()=>{},
-    hideHome:()=>{},
+    weight: "x",
+    clickHome: () => { },
+    hideHome: () => { },
 }
-    
+
 export default Profile;
 

@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ProfilePicChanger  from '../ProfilePicChanger';
-
 import murphy from './imgs/murphy.png';
 import editicon from './imgs/editIcon.png';
 
@@ -39,13 +38,16 @@ const Cancel = styled.text`
     cursor: pointer;
 `;
 
-const Done = styled.text`
+const Done = styled.button`
     color:#44DDFF;
+    background-color:#004476;
+    border:none;
     font-weight: bold;
     font-size: 24px;
     cursor: pointer;
     font-family: sans-serif;
-    padding:5%
+    padding:5%;
+    cursor:pointer;
 `;
 
 const Avatar = styled.div`
@@ -65,23 +67,23 @@ const ImgCont = styled.div`
     border: 10px solid white;
     z-index: 10;
     position: relative;
-    border: 6px solid #CCD9DF;
+    margin-bottom:20px;
 `;
 
 const Img = styled.img`
-width: 100%;
-height: 100%;
-object-fit: stretch;
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
 `;
 
-const Edit = styled.img`
-    width:30px;
-    height:30px;
-    position:relative;
-    left:180px;
-    bottom:40px;
-    cursor: pointer;
-`;
+// const Edit = styled.img`
+//     width:30px;
+//     height:30px;
+//     position:relative;
+//     left:180px;
+//     bottom:40px;
+//     cursor: pointer;
+// `;
 
 const Info = styled.div`
 
@@ -96,9 +98,10 @@ const Title = styled.text`
 `;
 
 const InfoBox = styled.div`
-    margin-left:4vw;
-    margin-bottom:2vw;
-    margin-top:2vw;
+    padding-right:15px;
+    padding-left:15px;
+    margin-bottom:20px;
+    margin-top:20px;
     display:flex;
     align-items:center;
   
@@ -106,7 +109,7 @@ const InfoBox = styled.div`
 
 const InfoEdit = styled.input`
     position:absolute;
-    left:180px;
+    left:140px;
     background-color:#CCD9DF;
     padding:20px;;
     border-radius:5px;
@@ -114,20 +117,13 @@ const InfoEdit = styled.input`
 
 const HorizontalRule = styled.hr`
     width:77%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 `;
 
-const fakedb = [
-    {
-        id:1,
-        name:"Murphy",
-        weight:"95",
-        year:"3",
-        month:"7",
-        avatar:murphy,
-    }
-]
+const fakedb = require('../../profileData.json')
 
-const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
+const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
 
     const [name, setName] = useState("");
     const [year, setYear] = useState("");
@@ -138,19 +134,21 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
     return <Container>
         <TopBar>
             <Cancel onClick={homeClick}>Cancel</Cancel>
-            <Done onClick={goHomePage} onClick={()=>{
-                DoneClick(name, year, month, weight, avatar)
-            }}>Done</Done>
+
+            <Done onClick={() => {
+                DoneClick(); submitClick(name, weight, year, month);
+            }}>Done
+            </Done>
         </TopBar>
         {/* <Avatar>
             <div>
-                <ImgCont>  
-                    {fakedb.map(o=><Img src={o.avatar} onChange={(e)=>{
-        setAvatar(e.target.value);
-      }}></Img>)}
+                <ImgCont>
+                    {fakedb.map(o => <Img src={o.avatar} onChange={(e) => {
+                        setAvatar(e.target.value);
+                    }}></Img>)}
                 </ImgCont>
-              
-                <Edit src={editicon} onClick={EditClick}></Edit>
+
+                {/* <Edit src={editicon} onClick={EditClick}></Edit> */}
             </div>
         </Avatar> */}
         <div className="avatar">
@@ -164,9 +162,9 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
             {/* Name info box */}
             <InfoBox>
                 <Title>Name</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.name} type="text" onChange={(e)=>{
-        setName(e.target.value);
-      }}></InfoEdit>)}
+                {fakedb.map(o => <InfoEdit placeholder={o.name} type="text" onChange={(e) => {
+                    setName(e.target.value);
+                }}></InfoEdit>)}
             </InfoBox>
 
             <HorizontalRule></HorizontalRule>
@@ -174,9 +172,9 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
             {/* Weight info box */}
             <InfoBox>
                 <Title>Weight</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.weight} type="text" onChange={(e)=>{
-        setWeight(e.target.value);
-      }}></InfoEdit>)}
+                {fakedb.map(o => <InfoEdit placeholder={o.weight} type="text" onChange={(e) => {
+                    setWeight(e.target.value);
+                }}></InfoEdit>)}
             </InfoBox>
 
             <HorizontalRule></HorizontalRule>
@@ -184,30 +182,32 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
             {/* Age info box */}
             <InfoBox>
                 <Title>Year</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.year} type="text" onChange={(e)=>{
-        setYear(e.target.value);
-      }}></InfoEdit>)}
+                {fakedb.map(o => <InfoEdit placeholder={o.year} type="text" onChange={(e) => {
+                    setYear(e.target.value);
+                }}></InfoEdit>)}
             </InfoBox>
 
             <HorizontalRule></HorizontalRule>
 
             <InfoBox>
                 <Title>Month</Title>
-                {fakedb.map(o=><InfoEdit placeholder={o.month} type="text" onChange={(e)=>{
-        setMonth(e.target.value);
-      }}></InfoEdit>)}
+                {fakedb.map(o => <InfoEdit placeholder={o.month} type="text" onChange={(e) => {
+                    setMonth(e.target.value);
+                }}></InfoEdit>)}
             </InfoBox>
 
             <HorizontalRule></HorizontalRule>
+
         </Info>
     </Container>
 }
 
 EditProfile.defaultProps = {
-    EditClick:()=>{},
-    homeClick:()=>{},
-    DoneClick:()=>{},
-    goHomePage:()=>{},
+    EditClick: () => { },
+    homeClick: () => { },
+    DoneClick: () => { },
+    goHomePage: () => { },
+    submitClick: () => { },
 }
 
 export default EditProfile;

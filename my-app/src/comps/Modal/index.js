@@ -15,6 +15,7 @@ const Container = styled.div`
 
 const Center = styled.div`
     width: 100%;
+    margin-left: -20px;
     display: flex;
     flex-direction: column;
     align-items: center;
