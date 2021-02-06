@@ -6,7 +6,7 @@ import Indicator from '../../comps/indicator';
 import DateComp from '../../comps/DateComp';
 import FilterComp from '../../comps/FilterComp';
 
-// const meals = require("../../mealData.json");
+const meals = require("../../mealData.json");
 
 
 const Container = styled.div`
@@ -55,48 +55,48 @@ font-family: 'Roboto', sans-serif;
 
 `;
 
-const meals = [
-    {
-        "id": "1",
-        "meal": "Breakfast",
-        "treatNum": "6",
-        "perc": 75,
-        "date": "31/01/2021",
-        "time": "6"
-    },
-    {
-        "id": "2",
-        "meal": "Lunch",
-        "perc": 25,
-        "treatNum": "6",
-        "date": "31/01/2021",
-        "time": "9"
-    },
-    {
-        "id": "3",
-        "meal": "Dinner",
-        "perc": 100,
-        "treatNum": "6",
-        "date": "30/01/2021",
-        "time": "20"
-    },
-    {
-        "id": "4",
-        "meal": "Breakfast",
-        "perc": 75,
-        "treatNum": "6",
-        "date": "30/01/2021",
-        "time": "7"
-    },
-    {
-        "id": "5",
-        "meal": "Lunch",
-        "perc": 25,
-        "treatNum": "6",
-        "date": "01/02/2021",
-        "time": "9"
-    }
-]
+// const meals = [
+//     {
+//         "id": "1",
+//         "meal": "Breakfast",
+//         "treatNum": "6",
+//         "perc": 75,
+//         "date": "31/01/2021",
+//         "time": "6"
+//     },
+//     {
+//         "id": "2",
+//         "meal": "Lunch",
+//         "perc": 25,
+//         "treatNum": "6",
+//         "date": "31/01/2021",
+//         "time": "9"
+//     },
+//     {
+//         "id": "3",
+//         "meal": "Dinner",
+//         "perc": 100,
+//         "treatNum": "6",
+//         "date": "30/01/2021",
+//         "time": "20"
+//     },
+//     {
+//         "id": "4",
+//         "meal": "Breakfast",
+//         "perc": 75,
+//         "treatNum": "6",
+//         "date": "30/01/2021",
+//         "time": "7"
+//     },
+//     {
+//         "id": "5",
+//         "meal": "Lunch",
+//         "perc": 25,
+//         "treatNum": "6",
+//         "date": "01/02/2021",
+//         "time": "9"
+//     }
+// ]
 
 
 const MainPage = () => {
@@ -120,6 +120,12 @@ const MainPage = () => {
             moment().add(num + 1, "days").format("DD/MM/YYYY")
         )
         console.log(food)
+        var resp = meals
+        var filtered = resp.filter((o, i) => {
+            return o.date.includes(currentDate);
+        })
+        setFood(filtered)
+        console.log(filtered);
     };
 
     const dateBack = () => { //this moves current date back by one, will be used with filtering by date
@@ -130,6 +136,12 @@ const MainPage = () => {
         setCurrentDate(
             moment().add(num - 1, "days").format("DD/MM/YYYY")
         )
+        var resp = meals
+        var filtered = resp.filter((o, i) => {
+            return o.date.includes(currentDate);
+        })
+        setFood(filtered)
+        console.log(filtered);
     };
 
 
@@ -157,27 +169,37 @@ const MainPage = () => {
 
     const GetFood = async () => { //this gets food from array
         var resp = meals //this will be a get request once we hve the API end points
-        setFood(resp)
-        console.log("get food", resp)
-    }
-
-    useEffect(() => { //this loads the food from the array on page load. 
-        GetFood()
-    }, []);
-
-    const filterByDate = () => {
-        const copy = food
-        var filtered = copy.filter((o, i) => {
+        var filtered = resp.filter((o, i) => {
             return o.date.includes(currentDate);
         })
         setFood(filtered)
-        console.log("current date filtered", filtered);
+        console.log("get food", filtered)
     }
 
-    const addMeal = (mealname) => {
-        console.log("meal name final", mealname)
+    useEffect(() => { //this loads the food from the array on page load. 
+        GetFood();
+    }, []);
 
-        // var resp = axios.post("website api endpoint", {meal: mealname, perc: perc, date: currentDate}) this is where we would do an axios post to the database, but for now, just pretend that its pushing to our fake db :) 
+    const filterByDate = () => {
+        // console.log("all food", meals)
+        console.log(currentDate)
+        // var resp = meals
+        // var filtered = resp.includes((o, i) => {
+        //     return o.date.includes(currentDate);
+        // })
+        // console.log("filtered food", filtered)
+    }
+
+    const addMeal = async(mealname) => {
+        console.log("meal name final", mealname)
+        var resp = meals.push({meal: mealname});
+        var resptest = food;
+        console.log("mealname on click", mealname)
+        console.log(resptest);
+        setFood(resptest)
+
+
+        // var resp = axios.post("website api endpoint", {content: mealname, perc: perc, date: currentDate}) this is where we would do an axios post to the database, but for now, just pretend that its pushing to our fake db :) 
         // console.log("added item", resp);
         // setFood(resp)
     }
@@ -185,6 +207,7 @@ const MainPage = () => {
     const handleMore = () => {
         //  var resp = meals//this will modify db input, grab meal id an update accordingly
         //  resp.perc(+ 25)
+
         alert("more")
     }
 
@@ -265,8 +288,8 @@ const MainPage = () => {
                 </Indicator>
             })}
         </div>
-        <div className="addComp"
-            onClick={addMeal}><AddItem handleAdd={addMeal} />
+        <div className="addComp">
+            <AddItem  />
         </div>
 
     </Container>
