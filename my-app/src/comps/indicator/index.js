@@ -208,22 +208,6 @@ import "./indicator.css";
 
 
 class Indicator extends React.Component {
-    // constructor(props) {
-    //     super(props)
-
-    //     this.state = {
-    //         percentage: 0
-    //     }
-
-    //     this.nextStep = this.nextStep.bind(this)
-    // }
-
-    // nextStep() {
-    //     if (this.state.percentage === 100) return
-    //     this.setState(prevState => ({ percentage: prevState.percentage + 25 }))
-    // }
-
-
 
 
     render() {
@@ -237,11 +221,11 @@ class Indicator extends React.Component {
                 }} src={close}></img>
                 <h2> {this.props.mealname}</h2>
                 <div className="bar">
-                    <button className="button" onClick={clickMore}>
+                    <button id="button" src="img/empty.png" onClick={clickMore}>
                         <img className="bowlicon" src="img/empty.png" alt="ate more" />
                     </button>
                     <ProgressBar percentage={perc} />
-                    <button className="button" onClick={clickLess}>
+                    <button id="button" onClick={clickLess}>
                         <img className="bowlicon" src="img/completed.png" alt="ate less" />
                     </button>
                 </div>

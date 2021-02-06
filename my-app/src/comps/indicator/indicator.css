@@ -16,7 +16,6 @@
 .bar {
   display: flex;
   width: 100%;
-  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-around;
 }
@@ -31,7 +30,7 @@
   margin: 10px;
 }
 
-.button {
+#button {
   cursor: pointer;
   background: none;
   border: none;
