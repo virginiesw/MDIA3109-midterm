@@ -13,7 +13,6 @@ import edit from '../../img/edit.png';
 import { SELECTION_NONE } from 'antd/lib/table/hooks/useSelection';
 
 const Image = styled.img`
-
 `;
 const Modal = styled.div`
 display: flex;
@@ -24,8 +23,6 @@ background-color: #DAD;
 position: absolute;
 top: 150px;
 left: -90px;
-
-
 `;
 
 // const CloseIcon = styled.img`
