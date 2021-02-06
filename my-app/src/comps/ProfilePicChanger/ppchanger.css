@@ -1,0 +1,26 @@
+.ProfilePicChanger {
+   width: 220px;
+   height: 150px;
+    /* border: 1px solid black; */
+    position: relative;
+}
+
+.button {
+    display:flex;
+    border: none;
+    position:absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.imgicon {
+    width: 30px;
+}
+
+.innerCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}

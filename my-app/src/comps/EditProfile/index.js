@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import ProfilePicChanger  from '../ProfilePicChanger';
 
 import murphy from './imgs/murphy.png';
 import editicon from './imgs/editIcon.png';
@@ -11,6 +12,12 @@ const Container = styled.div`
     max-height: 1000px;
     background-color:#004476;
     margin:0;
+
+    .avatar {
+        display: flex;
+        justify-content:center;
+        margin-top:5%;
+    }
 `;
 
 const TopBar = styled.div`
@@ -129,7 +136,7 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
                 DoneClick(name, year, month, weight, avatar)
             }}>Done</Done>
         </TopBar>
-        <Avatar>
+        {/* <Avatar>
             <div>
                 <ImgCont>  
                     {fakedb.map(o=><Img src={o.avatar} onChange={(e)=>{
@@ -139,7 +146,11 @@ const EditProfile = ({EditClick, homeClick, DoneClick, goHomePage}) => {
               
                 <Edit src={editicon} onClick={EditClick}></Edit>
             </div>
-        </Avatar>
+        </Avatar> */}
+        <div className="avatar">
+              <ProfilePicChanger />
+        </div>
+      
         <Info>
             {/* Name info box */}
             <InfoBox>
