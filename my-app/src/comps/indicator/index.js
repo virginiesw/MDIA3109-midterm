@@ -207,12 +207,12 @@ import ProgressBar from '../ProgressBar';
 
 // export default Indicator;
 
-const Indicator = ({onClick, mealname, handleDelete, clickLess, clickMore, perc, id}) => {
+const Indicator = ({onClick, mealname, handleDelete, clickLess, clickMore, perc, id, completed}) => {
 
 
 
     return <div onClick={() =>
-        onClick(id)} className="container">{id}
+        onClick(id, completed)} className="container">{id} - {completed}
         <img className="closeimg"
             onClick={() => handleDelete()}
             src={close}></img>
@@ -237,6 +237,7 @@ Indicator.defaultProps = {
     clickMore: ()=>{},
     handleDelete: ()=>{},
     id: null,
+    completed: null
 }
 
 
