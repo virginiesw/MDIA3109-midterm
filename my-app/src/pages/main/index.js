@@ -57,50 +57,51 @@ font-family: 'Roboto', sans-serif;
 const MainPage = () => {
 
 
-    const [completed, setCompeted] = useState(50);
+    const [complete, setCompleted] = useState(null);
     const [food, setFood] = useState([]); //for getting food array 
     const [sortFoodLeast, setSortFoodLeast] = useState(true); //for filter food by least complete
     const [sortFoodMost, setSortFoodMost] = useState(true); //for filtering food by most complete
     const [sorted, setSorted] = useState(true);
-    const [selectedId, setSelected] = useState("");
+    const [selectedId, setSelected] = useState(null)
     const [currentDate, setCurrentDate] = useState(moment().format("DD/MM/YYYY")); //for filtering by date
     const [num, setNum] = useState(0) //used in junction with currentDate
 
+
     const dateForward = () => { //this moves the date forward one, will be used with filtering by date
-        
-        setNum(
-            num + 1
-        )
-        console.log("current number", num)
-        setCurrentDate(
-            moment().add(num + 1, "days").format("DD/MM/YYYY")
-        )
-        var resp = food //this will be a get request once we hve the API end points
-        var filtered = resp.filter((o, i) => {
-            return o.date.includes(currentDate);
-        })
-        setFood(filtered)
-        console.log("get food", filtered)
-        console.log("current date on click forward is", currentDate)
+
+        // setNum(
+        //     num + 1
+        // )
+        // console.log("current number", num)
+        // setCurrentDate(
+        //     moment().add(num + 1, "days").format("DD/MM/YYYY")
+        // )
+        // var resp = food //this will be a get request once we hve the API end points
+        // var filtered = resp.filter((o, i) => {
+        //     return o.date.includes(currentDate);
+        // })
+        // setFood(filtered)
+        // console.log("get food", filtered)
+        // console.log("current date on click forward is", currentDate)
     };
 
 
 
     const dateBack = () => { //this moves current date back by one, will be used with filtering by date
-        setNum(
-           num - 1
-        )
-        console.log("current number", num)
-        setCurrentDate(
-            moment().add(num - 1, "days").format("DD/MM/YYYY")
-        )
-        var resp = food //this will be a get request once we hve the API end points
-        var filtered = resp.filter((o, i) => {
-            return o.date.includes(currentDate);
-        })
-        setFood(filtered)
-        console.log("get food", filtered)
-        console.log("current date on click back is", currentDate)
+        // setNum(
+        //     num - 1
+        // )
+        // console.log("current number", num)
+        // setCurrentDate(
+        //     moment().add(num - 1, "days").format("DD/MM/YYYY")
+        // )
+        // var resp = food //this will be a get request once we hve the API end points
+        // var filtered = resp.filter((o, i) => {
+        //     return o.date.includes(currentDate);
+        // })
+        // setFood(filtered)
+        // console.log("get food", filtered)
+        // console.log("current date on click back is", currentDate)
     };
 
 
@@ -130,7 +131,7 @@ const MainPage = () => {
         console.log("food dabase", resp.data.meals)
         setFood(resp.data.meals)
         // setFood(resp)
-     
+
     }
 
     useEffect(() => { //this loads the food from the array on page load. 
@@ -141,8 +142,8 @@ const MainPage = () => {
 
     const filterByDate = () => {
         // console.log("all food", meals)
-        console.log(currentDate)
-        setCurrentDate(currentDate)
+        // console.log(currentDate)
+        // setCurrentDate(currentDate)
         // var resp = meals
         // var filtered = resp.includes((o, i) => {
         //     return o.date.includes(currentDate);
@@ -150,71 +151,66 @@ const MainPage = () => {
         // console.log("filtered food", filtered)
     }
 
-    const AddMeal = (mealname) => {
-        console.log(mealname);
-        var resp = axios.post("https://murphy-db.herokuapp.com/api/meals", 
-        {
-            content: mealname,
-          
-          });
-        console.log("created", resp);
+    const AddMeal = async () => {
+        // console.log("mealname", mealname)
+
+    var resp = await axios.post("https://murphy-db.herokuapp.com/api/meals", {
+        content: "dinner",
+        completed: 50
+    });
+    GetFood();
+};
+
+const handleMore = async () => {
+    setSelected();
+    setCompleted();
+    var resp = await axios.patch(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`, {
+        completed: complete + 25
+    });
+    GetFood();
+        // setFood();
+    // console.log(resp)
+}
+
+const handleLess = async () => {
+    var resp = await axios.patch(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`, {
+        completed: complete - 25
+    });
+    GetFood();
+    // console.log(resp)
+}
+
+const clickDelete = () => {
+    // alert("delete");
+    if (selectedId === null) {
+        return false;
     }
-
-    const handleMore = () => {
-        console.log("completed", completed)
-        // console.log(perc)
-        //  var resp = meals//this will modify db input, grab meal id an update accordingly
-        //  resp.perc(+ 25)
-        if(selectedId === null){
-            return false;
-        }
-        // console.log(selectedId, "function id")
-        var resp =  axios.patch(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`, {
-            "completed": 50
-        });
-        GetFood();
-
-        alert("more")
-    }
-
-    const handleLess = () => {
-        //  var resp = meals //this will modify db input, grab meal id an update accordingly
-        //   resp.perc(- 25)
-        //  console.log(id);
-        alert("less")
-    }
-
-    const clickDelete = () => {
-        // alert("delete");
-        if(selectedId === null){
-            return false;
-        }
-        // console.log(selectedId, "function id")
-        var resp =  axios.delete(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`)
-        GetFood();
-    }
+    // console.log(selectedId, "function id")
+    var resp = axios.delete(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`)
+    GetFood();
+}
 
 
-    return <Container>
-        <div className="title" onClick={filterByDate}>Feeding Schedule</div>
-        {/* {currentDate} */}
-        <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
-        <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
-        <div className="food">
-            {food.map(o => {
-                return <Indicator handleDelete={clickDelete} onClick={(id) => {
-                    console.log("id", o.id) //grabbing id for now
-                    setSelected(o.id);
-                }} clickLess={handleLess} clickMore={handleMore}
-                    mealname={o.content} perc={o.perc}>
-                </Indicator>
-            })}
-        </div>
-        <div className="addComp">
-            <AddItem handleAddB={AddMeal} handleAddL={AddMeal} handleAddD={AddMeal} />
-        </div>
+return <Container>
+    <div className="title" onClick={filterByDate}>Feeding Schedule</div>
+    {/* {currentDate} */}
+    <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
+    <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
+    <div className="food">
+        {food.map(o => {
+            return <Indicator handleDelete={clickDelete} onClick={() => {
+                setSelected(o.id);
+                setCompleted(o.completed);
+            }} clickLess={handleLess} clickMore={handleMore}
+                mealname={o.content} perc={o.completed}>
+            </Indicator>
+        })}
+    </div>
+    <div className="addComp">
+        <AddItem handleAdd={AddMeal} />
+    </div>
 
-    </Container>
+</Container>
 }
 
 
@@ -228,7 +224,7 @@ function sortMostComplete(a, b) {
     // } else {
     //     return 0
     // }
-    return b.perc - a.perc
+    return b.completed - a.completed
 }
 function sortLeastComplete(a, b) {
     // if (a.perc > b.perc){
@@ -238,5 +234,5 @@ function sortLeastComplete(a, b) {
     // } else {
     //     return 0
     // }
-    return a.perc - b.perc
+    return a.completed - b.completed
 }
