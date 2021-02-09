@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import close from '../../img/close.png';
 import styled from 'styled-components';
 import "./indicator.css";
+import ProgressBar from '../ProgressBar';
 
 // const Container = styled.div`
 
@@ -206,52 +207,36 @@ import "./indicator.css";
 
 // export default Indicator;
 
+const Indicator = ({onClick, mealname, handleDelete, clickLess, clickMore, perc, id}) => {
 
-class Indicator extends React.Component {
 
 
-    render() {
-
-        const { mealname, perc, clickLess, clickMore, id, onClick } = this.props;
-        return (
-            <div onClick={() =>
-                onClick(id)} className="container">{id}
-                <img className="closeimg" onClick={() => {
-                    // deleting meals will be an axios delete once the real DB is implemented
-                }} src={close}></img>
-                <h2> {mealname}</h2>
-                <div className="bar">
-                    <button id="button" src="img/empty.png" onClick={() => {clickLess(mealname)}}>
-                        <img className="bowlicon" src="img/completed.png" alt="ate more" />
-                    </button>
-                    <ProgressBar percentage={perc} />
-                    <button id="button" onClick={() => {clickMore(mealname)}}>
-                        <img className="bowlicon" src="img/empty.png" alt="ate less" />
-                    </button>
-                </div>
-            </div>
-        )
-    }
-}
-
-const ProgressBar = (props) => {
-    return (
-        <div className="progress-bar">
-            <Filler percentage={props.percentage} />
+    return <div onClick={() =>
+        onClick(id)} className="container">{id}
+        <img className="closeimg"
+            onClick={() => handleDelete()}
+            src={close}></img>
+        <h2> {mealname}</h2>
+        <div className="bar">
+            <button id="button" src="img/empty.png" onClick={() => { clickLess(mealname) }}>
+                <img className="bowlicon" src="img/completed.png" alt="ate more" />
+            </button>
+            <ProgressBar percentage={perc} />
+            <button id="button" onClick={() => { clickMore(mealname) }}>
+                <img className="bowlicon" src="img/empty.png" alt="ate less" />
+            </button>
         </div>
-    )
+    </div>
 }
 
-const Filler = (props) => {
-    return <div className="filler" style={{ width: `${props.percentage}%` }} />
-}
 
 Indicator.defaultProps = {
     mealname: "breakfast",
     perc: 25,
-    clickLess: () => { },
-    clickMore: () => { },
-    id: null
+    clickLess: ()=>{},
+    clickMore: ()=>{},
+    handleDelete: ()=>{},
+    id: null,
 }
 
 
