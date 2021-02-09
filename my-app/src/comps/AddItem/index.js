@@ -124,33 +124,11 @@ margin-left: -30px;
 //     }   
 // }
 
-const AddItem = ({ handleAddB, handleAddL, handleAddD, handleAddS  }) => {
+const AddItem = ({ handleAdd }) => {
 
 
     const [open, setOpen] = useState(true);
-
     const [mealname, setMealname] = useState("");
-
-    const handleBreakfast = (event) => {
-        setMealname(event.target.textContent);
-        console.log("meal name 1", mealname)
-    }
-
-    const handleLunch = (event) => {
-        setMealname(event.target.textContent);
-        console.log("meal name 1", mealname)
-    }
-
-    const handleDinner = (event) => {
-        setMealname(event.target.textContent);
-        console.log("meal name 1", mealname)
-    }
-
-    const handleTreat = (event) => {
-        setMealname(event.target.textContent);
-        console.log("meal name 1", mealname)
-    }
-
 
 
     return <Container>
@@ -166,25 +144,33 @@ const AddItem = ({ handleAddB, handleAddL, handleAddD, handleAddS  }) => {
                         src={close} width="20px">
 
                     </CloseIcon>
-                    <div onClick={handleAddB(mealname)}>
-                        <MenuText onClick={event => handleBreakfast(event)}>Breakfast</MenuText>
+                    <div onClick={() => {
+                        handleAdd(mealname)
+                    }}>
+                        <MenuText>Breakfast</MenuText>
                     </div>
                     <TextLine></TextLine>
-                    <div onClick={handleAddL(mealname)}>
-                        <MenuText onClick={event => handleLunch(event)} >Lunch</MenuText>
+                    <div onClick={() => {
+                        handleAdd(mealname)
+                    }}>
+                        <MenuText >Lunch</MenuText>
                     </div>
                     <TextLine></TextLine>
-                    <div onClick={handleAddD(mealname)}>
-                        <MenuText onClick={event => handleDinner(event)}>Dinner</MenuText>
+                    <div onClick={() => {
+                        handleAdd(mealname)
+                    }}>
+                        <MenuText>Dinner</MenuText>
                     </div>
                     <TextLine></TextLine>
-                    <div onClick={handleAddS(mealname)}>
-                        <MenuText onClick={event => handleTreat(event)}>Treat</MenuText>
+                    <div onClick={() => {
+                        handleAdd(mealname)
+                    }}>
+                        <MenuText>Treat</MenuText>
+
                     </div>
                 </AddMenu>
             </IconCont>
         </div>
-
     </Container>
 
 }
@@ -192,12 +178,11 @@ const AddItem = ({ handleAddB, handleAddL, handleAddD, handleAddS  }) => {
 
 
 AddItem.defaultProps = {
-    handleAddB: () => { },
-    handleAddL: () => { },
-    handleAddD: () => { },
-    handleAddS: () => { }
+    handleAdd: ()=>{},
+    // handleAddL: () => { },
+    // handleAddD: () => { },
+    // handleAddS: () => { },
     // HandleSnack:()=>{},
-    // meal: "dinner",
 
 }
 

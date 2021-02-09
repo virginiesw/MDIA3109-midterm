@@ -2,10 +2,12 @@
 import './App.scss';
 
 import HomePage from './pages/home';
+import MainPage from './pages/main';
 
 function App() {
   return (
     <div className="App">
+      {/* <MainPage /> */}
         <HomePage />
     </div>
   );
