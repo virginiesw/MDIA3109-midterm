@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Component} from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import styled from 'styled-components';
 import treat from '../../img/treat.png';
 import addTreat from '../../img/add.png';
@@ -6,15 +6,16 @@ import deleteTreat from '../../img/delete.png';
 
 const Container = styled.div`
 border: 1px solid black;
-min-height: 74px;
-max-height: 200px;
+min-height: 50px;
+max-height: 150px;
 position: relative;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-min-width: 311px;
-max-width: 500px;
+background-color: #ffffff;
+width: 340px;
+margin: 10px;
 padding: 5px;
 `;
 
@@ -30,11 +31,11 @@ const HeaderCont = styled.div`
 display: flex;
 width: 100%;
 justify-content: space-between;
-
 `;
 
-const TextCont = styled.div``;
-const TreatIcono = styled.img``;
+const TreatIcono = styled.img`
+padding-bottom: 10px;
+`;
 
 const BigCont = styled.div`
 `;
@@ -43,12 +44,12 @@ const CounterIcon = styled.div`
 z-index: 9;
 position: absolute;
 left: 49%;
-top: 50%;
+top: 56%;
 
 `;
 
 const TreatCont = styled.div`
-height: 200px;
+height: 50px;
 min-width: 311px;
 max-width: 500px;
 
@@ -64,43 +65,43 @@ class TreatIndicator extends Component {
   };
   handleAdd = () => {
     console.log(this.state.count)
-       this.setState((prevState, { count }) => ({
-        count: prevState.count + 1
-      }));
-    
-    };
-    handleDelete = () => {
-      console.log(this.state.count)
-      if (this.state.count >= 1 ) {
-         this.setState((prevState, { count }) => ({
+    this.setState((prevState, { count }) => ({
+      count: prevState.count + 1
+    }));
+
+  };
+  handleDelete = () => {
+    console.log(this.state.count)
+    if (this.state.count >= 1) {
+      this.setState((prevState, { count }) => ({
         count: prevState.count - 1
       }));
-      }
-      else {
-        (this.state.count = 0)
-      }
-    };
+    }
+    else {
+      (this.state.count = 0)
+    }
+  };
   render() {
     return <Container>
-      <HeaderCont>    
-              <DeleteButton src={deleteTreat} onClick={this.handleDelete} width="20px"></DeleteButton>
-              <TextCont>Treats</TextCont>
-              <AddButton src={addTreat} onClick={this.handleAdd} width="20px"></AddButton> 
+      <HeaderCont>
+        <DeleteButton src={deleteTreat} onClick={this.handleDelete} width="30px" height="30px"></DeleteButton>
+        <h2>Treats</h2>
+        <AddButton src={addTreat} onClick={this.handleAdd} width="30px" height="30px"></AddButton>
       </HeaderCont>
       <TreatCont>
         <BigCont>
-                  <TreatIcono src={treat} width="130px"></TreatIcono>
+          <TreatIcono src={treat} width="150px"></TreatIcono>
         </BigCont>
         <div>
-           <CounterIcon>
-          {this.state.count}
-        </CounterIcon>
+          <CounterIcon>
+            {this.state.count}
+          </CounterIcon>
         </div>
-       
-      </TreatCont>      
+
+      </TreatCont>
     </Container>
-       
-  
+
+
   }
 }
 
