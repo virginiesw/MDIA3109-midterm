@@ -121,7 +121,7 @@ const Profile = ({ name, imgurl, year, month, weight, clickHome, hideHome }) => 
                         </WeightCont>
                     </InfoCont>
                 </BigCont>
-
+    
             </ProfileCont>
         </InnerCont>
     </Container>
