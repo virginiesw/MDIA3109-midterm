@@ -278,7 +278,7 @@ const MainPage = () => {
         <div className="addComp"><AddItem /></div>
 
 
-        </div>
+        {/* </div> */}
         {/* <div>{currentDate}</div> */}
         <div className="addComp" 
         onClick={addMeal}><AddItem handleAdd={addMeal}/></div>

@@ -149,8 +149,8 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
                 </ImgCont>
 
                 {/* <Edit src={editicon} onClick={EditClick}></Edit> */}
-            </div>
-        </Avatar> */}
+            {/* </div> */}
+        {/* </Avatar> */} */}
         <div className="avatar">
               <ProfilePicChanger />
         </div>
