@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import AddItem from '../../comps/AddItem';
 import Indicator from '../../comps/indicator';
+import TreatIndicator from '../../comps/TreatIndicator';
 import DateComp from '../../comps/DateComp';
 import FilterComp from '../../comps/FilterComp';
 
@@ -104,6 +105,7 @@ const MainPage = () => {
 
 
     const [food, setFood] = useState([]); //for getting food array 
+    const [snacks, setSnacks] = useState([]); //for getting food array 
     const [sortFoodLeast, setSortFoodLeast] = useState(true); //for filter food by least complete
     const [sortFoodMost, setSortFoodMost] = useState(true); //for filtering food by most complete
     const [sorted, setSorted] = useState(true);
@@ -112,7 +114,7 @@ const MainPage = () => {
     const [num, setNum] = useState(0) //used in junction with currentDate
 
     const dateForward = () => { //this moves the date forward one, will be used with filtering by date
-        
+
         setNum(
             num + 1
             // (prevState,) => ({
@@ -136,7 +138,7 @@ const MainPage = () => {
 
     const dateBack = () => { //this moves current date back by one, will be used with filtering by date
         setNum(
-           num - 1
+            num - 1
             // (prevState,) => ({
             //     num: prevState.num - 1
             // })
@@ -203,9 +205,9 @@ const MainPage = () => {
         // console.log("filtered food", filtered)
     }
 
-    const addMeal = async(mealname) => {
+    const addMeal = async (mealname) => {
         console.log("meal name final", mealname)
-        var resp = meals.push({meal: mealname});
+        var resp = meals.push({ meal: mealname });
         var resptest = food;
         console.log("mealname on click", mealname)
         console.log(resptest);
@@ -225,6 +227,19 @@ const MainPage = () => {
     }
 
     const handleLess = () => {
+        //  var resp = meals //this will modify db input, grab meal id an update accordingly
+        //   resp.perc(- 25)
+        //  console.log(id);
+        alert("less")
+    }
+
+    const treatsMore = () => {
+        //  var resp = meals//this will modify db input, grab meal id an update accordingly
+        //  resp.perc(+ 25)
+        alert("more")
+    }
+
+    const treatsLess = () => {
         //  var resp = meals //this will modify db input, grab meal id an update accordingly
         //   resp.perc(- 25)
         //  console.log(id);
@@ -302,8 +317,18 @@ const MainPage = () => {
                 </Indicator>
             })}
         </div>
+        <div className="snacks">
+            {snacks.map(o => {
+                    return <TreatIndicator onClick={(id) => {
+                        console.log("id", id) //grabbing id for now
+                        setSelected(id);
+                    }} clickLess={treatsLess} clickMore={treatsMore}
+                        amount={o.amount} date={o.date}>
+                    </TreatIndicator>
+                })}
+        </div>
         <div className="addComp">
-            <AddItem  />
+            <AddItem />
         </div>
 
     </Container>
