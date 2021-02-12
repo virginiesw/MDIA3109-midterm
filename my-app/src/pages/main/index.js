@@ -264,7 +264,7 @@ const MainPage = () => {
     return <Container>
         <div className="title" onClick={filterByDate}>Feeding Schedule</div>
         {/* {currentDate} */}
-        <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
+        {/* <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div> */}
         <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
         <div className="food">
             {food.map(o => {
