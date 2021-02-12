@@ -28,6 +28,7 @@ const Container = styled.div`
 const TopBar = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-bottom:100px;
 `;
 
 const Cancel = styled.text`
@@ -67,6 +68,8 @@ const Avatar = styled.div`
 
 const ImgCont = styled.div`
     display:flex;
+    align-items:center;
+    justify-content:center;
     overflow: hidden;
     min-height: 131px;
     min-width: 131px;
@@ -172,9 +175,9 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
                 {/* <Edit src={editicon} onClick={EditClick}></Edit> */}
             {/* </div> */}
         {/* // <Avatar /> */} 
-        <div className="avatar">
-              <ProfilePicChanger />
-        </div>
+        {/* <ImgCont>
+            <Img src="https://i.pinimg.com/564x/54/82/bd/5482bdf0170c7016387b43eccac50f82.jpg"></Img>
+        </ImgCont> */}
       
         <Info>
         {/* <div className="avatar">

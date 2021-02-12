@@ -67,7 +67,7 @@ const HomePage = () => {
                   setOpen(!open);
                   setClose(!close)
               }}  
-             imgurl={o.avatar} name={o.name} weight={o.weight} year={o.year} month={o.month}>{o.avatar} - {o.name} - {o.weight} - {o.year} - {o.month} 
+             imgurl="https://i.pinimg.com/564x/54/82/bd/5482bdf0170c7016387b43eccac50f82.jpg" name={o.name} weight={o.weight} year={o.year} month={o.month}>{o.avatar} - {o.name} - {o.weight} - {o.year} - {o.month} 
          </Profile>)} 
             <div className="mainCont">
                     <MainPage />

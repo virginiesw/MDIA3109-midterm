@@ -28,7 +28,6 @@ const ProfileEditPage = ({pageHide}) =>{
             weight:weight,
             year:year,
             month:month,
-            avatar:avatar
         })
     }
 
