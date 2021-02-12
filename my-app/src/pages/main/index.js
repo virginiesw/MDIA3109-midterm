@@ -35,7 +35,8 @@ font-family: 'Roboto', sans-serif;
 
 .title {
     font-size: 30px;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 

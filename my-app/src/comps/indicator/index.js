@@ -216,7 +216,7 @@ const Indicator = ({onClick, mealname, handleDelete, clickLess, clickMore, perc,
         <img className="closeimg"
             onClick={() => handleDelete()}
             src={close}></img>
-        <h2> {mealname}</h2>
+        <h2>{mealname}</h2>
         <div className="bar">
             <button id="button" src="img/empty.png" onClick={() => { clickLess(mealname) }}>
                 <img className="bowlicon" src="img/completed.png" alt="ate more" />
