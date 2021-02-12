@@ -161,13 +161,6 @@ const AddItem = ({ handleAdd }) => {
                     }}>
                         <MenuText>Dinner</MenuText>
                     </div>
-                    <TextLine></TextLine>
-                    <div onClick={() => {
-                        handleAdd(mealname)
-                    }}>
-                        <MenuText>Treat</MenuText>
-
-                    </div>
                 </AddMenu>
             </IconCont>
         </div>
