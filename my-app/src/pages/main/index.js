@@ -244,16 +244,18 @@ const MainPage = () => {
         // setSelectedTreats();
 
         var resp = await axios.patch(`https://murphytreatdb.herokuapp.com/api/treats/${selectedTreats}`, {
-            amount: amount + 1
+            amount: +1
         });
         setAmount(amount +1);
         GetTreats();
     }
 
+
+
     const treatsLess = async () => {
       
         var resp = await axios.patch(`https://murphytreatdb.herokuapp.com/api/treats/${selectedTreats}`, {
-            amount: amount - 1
+            amount: -1
         });
         setAmount(amount -1);
         GetTreats();
