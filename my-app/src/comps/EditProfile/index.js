@@ -176,7 +176,7 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
                 {/* <Edit src={editicon} onClick={EditClick}></Edit> */}
             {/* </div> */}
 
-        {/* </Avatar> */} */}
+        {/* </Avatar> */} 
 
         {/* // <Avatar /> */} 
 
