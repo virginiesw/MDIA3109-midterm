@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ProfilePicChanger  from '../ProfilePicChanger';
 import murphy from './imgs/murphy.png';
 import editicon from './imgs/editIcon.png';
+import axios from 'axios';
 
 const Container = styled.div`
     min-width:300px;
@@ -27,6 +28,7 @@ const Container = styled.div`
 const TopBar = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-bottom:100px;
 `;
 
 const Cancel = styled.text`
@@ -66,6 +68,8 @@ const Avatar = styled.div`
 
 const ImgCont = styled.div`
     display:flex;
+    align-items:center;
+    justify-content:center;
     overflow: hidden;
     min-height: 131px;
     min-width: 131px;
@@ -132,8 +136,6 @@ const HorizontalRule = styled.hr`
     margin-bottom: 15px;
 `;
 
-const fakedb = require('../../profileData.json')
-
 const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
 
     const [name, setName] = useState("");
@@ -142,13 +144,25 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
     const [avatar, setAvatar] = useState("");
     const [weight, setWeight] = useState("");
 
+    const [profile, setProfile] = useState([]);
+
+    const GetProfile = async() => {
+        var resp = await axios.get("https://murphy-profile-db.herokuapp.com/api/profile");
+        setProfile(resp.data.Profiles)
+    }
+
+    useEffect(()=>{
+        GetProfile();
+    }, []);
+
     return <Container>
         <TopBar>
             <Cancel onClick={homeClick}>Cancel</Cancel>
 
             <Done onClick={() => {
-                DoneClick(); submitClick(name, weight, year, month);
-            }}>Save
+                DoneClick(); submitClick(name, weight, year, month, avatar);
+            }}>Done
+
             </Done>
         </TopBar>
         {/* <Avatar>
@@ -166,9 +180,9 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
 
         {/* // <Avatar /> */} 
 
-        <div className="avatar">
-              <ProfilePicChanger />
-        </div>
+        {/* <ImgCont>
+            <Img src="https://i.pinimg.com/564x/54/82/bd/5482bdf0170c7016387b43eccac50f82.jpg"></Img>
+        </ImgCont> */}
       
         <Info>
         {/* <div className="avatar">
@@ -177,7 +191,7 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
             {/* Name info box */}
             <InfoBox>
                 <Title>Name</Title>
-                {fakedb.map(o => <InfoEdit placeholder={o.name} type="text" onChange={(e) => {
+                {profile.map(o => <InfoEdit placeholder={o.name} type="text" onChange={(e) => {
                     setName(e.target.value);
                 }}></InfoEdit>)}
             </InfoBox>
@@ -187,7 +201,7 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
             {/* Weight info box */}
             <InfoBox>
                 <Title>Weight</Title>
-                {fakedb.map(o => <InfoEdit placeholder={o.weight} type="text" onChange={(e) => {
+                {profile.map(o => <InfoEdit placeholder={o.weight} type="text" onChange={(e) => {
                     setWeight(e.target.value);
                 }}></InfoEdit>)}
             </InfoBox>
@@ -197,7 +211,7 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
             {/* Age info box */}
             <InfoBox>
                 <Title>Year</Title>
-                {fakedb.map(o => <InfoEdit placeholder={o.year} type="text" onChange={(e) => {
+                {profile.map(o => <InfoEdit placeholder={o.year} type="text" onChange={(e) => {
                     setYear(e.target.value);
                 }}></InfoEdit>)}
             </InfoBox>
@@ -206,7 +220,7 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
 
             <InfoBox>
                 <Title>Month</Title>
-                {fakedb.map(o => <InfoEdit placeholder={o.month} type="text" onChange={(e) => {
+                {profile.map(o => <InfoEdit placeholder={o.month} type="text" onChange={(e) => {
                     setMonth(e.target.value);
                 }}></InfoEdit>)}
             </InfoBox>

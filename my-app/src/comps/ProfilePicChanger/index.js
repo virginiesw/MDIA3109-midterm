@@ -193,14 +193,14 @@ class ProfilePicChanger extends Component {
       <div className="ProfilePicChanger">
         {/* <Button className="button"
          onClick={() => this.setState({ showing: !showing })}> */}
-        <Image className="imgicon" src={edit}
+        {/* <Image className="imgicon" src={edit}
           className="button" onClick={() => this.setState({ showing: !showing })}
-        ></Image>
+        ></Image> */}
         {/* </Button> */}
         <div className="innerCont">
           <div className="imageSlider">
             <div onClick={this.onClickHandler} className="sideImages"  >
-              {showing
+              {/* {showing
                 ?
                 <Modal
 
@@ -209,7 +209,7 @@ class ProfilePicChanger extends Component {
 
                 </Modal>
                 : null
-              }
+              } */}
             </div>
             <div className="display">
               <Avatar size={150} icon="user" src={this.state.images[this.state.selectedImageIndex]["img"]} alt="Target Image" />
