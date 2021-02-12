@@ -94,7 +94,7 @@ margin-left: -30px;
 
 const Profile = ({ name, imgurl, year, month, weight, clickHome, hideHome }) => {
 
-
+    
 
 
 

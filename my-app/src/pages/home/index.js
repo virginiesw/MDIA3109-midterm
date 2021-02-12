@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 import Profile from '../../comps/Profile';
 import ProfileEditPage from '../profile';
 import ProfilePicChanger from '../../comps/ProfilePicChanger';
+import axios from 'axios';
 
 const Container = styled.div`
 display: flex;
@@ -51,9 +52,8 @@ const HomePage = () => {
     //This will be modified with a get request to our endpoint once the database is set up
     //for now, use fake database
     const GetProfile = async () => {
-        var resp = fakedb;
-        setProfile(resp);
-        console.log(resp);
+        var resp = await axios.get("https://murphy-profile-db.herokuapp.com/api/profile");
+        setProfile(resp.data.Profiles);
     }
 
     useEffect(()=>{
@@ -77,6 +77,7 @@ const HomePage = () => {
                <ProfileEditPage pageHide={() => {
                    setOpen(!open);
                    setClose(!close);
+                   GetProfile();
               }}
              /> 
         </div>
