@@ -76,6 +76,7 @@ const MainPage = () => {
     const [sortFoodLeast, setSortFoodLeast] = useState(true); //for filter food by least complete
     const [sortFoodMost, setSortFoodMost] = useState(true); //for filtering food by most complete
     const [sorted, setSorted] = useState(true);
+
     const [selectedId, setSelected] = useState(null)
     const [selectedTreats, setSelectedTreats] = useState(null)
     const [currentDate, setCurrentDate] = useState(moment().format("DD/MM/YYYY")); //for filtering by date
@@ -117,6 +118,19 @@ const MainPage = () => {
         // setFood(filtered)
         // console.log("get food", filtered)
         // console.log("current date on click back is", currentDate)
+        // food.resp.includes((o, i) => {
+        //         return o.date.includes(currentDate);
+        //     })
+        //     console.log("date filtered back", copy)
+        const copy = food
+        if (setCurrentDate) {
+            copy.sort(SortByDateBack)
+        }
+        console.log("date filtered back", copy)
+        // console.log("date filtered back", copy)
+        setCurrentDate(!currentDate)
+        setFood(copy)
+        
     };
 
 
@@ -148,24 +162,34 @@ const MainPage = () => {
         // setFood(resp)
 
     }
+    //  const GetFood = async () => { //this gets food from array
+    //     // var resp = meals //this will be a get request once we hve the API end points
+    //     var resp = await axios.get("https://murphy-db.herokuapp.com/api/meals");
+    //     console.log("food dabase", resp.data.meals)
+    //     setFood(resp.data.meals)
+    //     // setFood(resp)
+
+    // }
 
     useEffect(() => { //this loads the food from the array on page load. 
         GetFood();
         GetTreats();
         // dateForward();
-        // dateBack();
+        dateBack();
     }, []);
 
     const filterByDate = () => {
-        // console.log("all food", meals)
+        const copy = food
+        // console.log("all food", copy)
         // console.log(currentDate)
         // setCurrentDate(currentDate)
-        // var resp = meals
-        // var filtered = resp.includes((o, i) => {
+        // // var resp = meals
+        // var filtered = copy.includes((o) => {
         //     return o.date.includes(currentDate);
         // })
         // console.log("filtered food", filtered)
     }
+
 
     const AddMeal = async () => {
         // console.log("mealname", mealname)
@@ -236,6 +260,30 @@ const MainPage = () => {
     }
 
 
+
+return <Container>
+    <div className="title" onClick={filterByDate}>Feeding Schedule</div>
+    {/* {currentDate} */}
+    <div className="dateComp"> <DateComp handleBack={dateBack} handleForward={dateForward} /></div>
+    <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
+    <div className="food">
+        
+        {food.map(o => {
+            return <Indicator handleDelete={clickDelete} onClick={() => {
+                setSelected(o.id);
+                setFood(o.date);
+                setCompleted(o.completed);
+            }} clickLess={handleLess} clickMore={handleMore}
+                mealname={o.content} perc={o.completed}>
+            </Indicator>
+        })}
+    </div>
+    <div className="addComp">
+        <AddItem handleAdd={AddMeal} />
+    </div>
+
+</Container>
+
     return <Container>
         <div className="title" onClick={filterByDate}>Feeding Schedule</div>
         {/* {currentDate} */}
@@ -265,6 +313,7 @@ const MainPage = () => {
         </div>
 
     </Container>
+
 }
 
 
@@ -290,3 +339,8 @@ function sortLeastComplete(a, b) {
     // }
     return a.completed - b.completed
 }
+function SortByDateBack(a,b){
+    return a.date > b.date ? -1 : b.date > a.date ? 1 : 0;
+        // }
+        // return a.meals - b.meals
+  }
