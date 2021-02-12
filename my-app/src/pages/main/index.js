@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import AddItem from '../../comps/AddItem';
 import Indicator from '../../comps/indicator';
+import TreatIndicator from '../../comps/TreatIndicator';
 import DateComp from '../../comps/DateComp';
 import FilterComp from '../../comps/FilterComp';
 import axios from 'axios';
@@ -18,6 +19,11 @@ flex-direction: column;
 align-items: center;
 position: relative;
 font-family: 'Roboto', sans-serif;
+
+
+.color {
+    outline: 2px solid yellow;
+}
 
 .filterComp {
     position: absolute;
@@ -51,18 +57,27 @@ font-family: 'Roboto', sans-serif;
     height: 440px;
     white-space: nowrap;
 }
-
 `;
+
+// Trying to add an outline to div when clicked
+// var addclass = 'color';
+// var $cols = $('.highlight').click(function(e) {
+//     $cols.removeClass(addclass);
+//     $(this).addClass(addclass);
+// });
 
 const MainPage = () => {
 
 
     const [complete, setCompleted] = useState(null);
+    const [amount, setAmount] = useState(null);
     const [food, setFood] = useState([]); //for getting food array 
+    const [snacks, setSnacks] = useState([]); //for getting food array 
     const [sortFoodLeast, setSortFoodLeast] = useState(true); //for filter food by least complete
     const [sortFoodMost, setSortFoodMost] = useState(true); //for filtering food by most complete
     const [sorted, setSorted] = useState(true);
     const [selectedId, setSelected] = useState(null)
+    const [selectedTreats, setSelectedTreats] = useState(null)
     const [currentDate, setCurrentDate] = useState(moment().format("DD/MM/YYYY")); //for filtering by date
     const [num, setNum] = useState(0) //used in junction with currentDate
 
@@ -115,7 +130,7 @@ const MainPage = () => {
         setFood(copy)
     }
 
-    const filterMost = () => { //this filters by meal of most completetion 
+    const filterMost = () => { //this filters by meal of most completion 
         const copy = food
         if (sortFoodMost) {
             copy.sort(sortMostComplete)
@@ -136,6 +151,7 @@ const MainPage = () => {
 
     useEffect(() => { //this loads the food from the array on page load. 
         GetFood();
+        GetTreats();
         // dateForward();
         // dateBack();
     }, []);
@@ -154,63 +170,101 @@ const MainPage = () => {
     const AddMeal = async () => {
         // console.log("mealname", mealname)
 
-    var resp = await axios.post("https://murphy-db.herokuapp.com/api/meals", {
-        content: "dinner",
-        completed: 50
-    });
-    GetFood();
-};
+        var resp = await axios.post("https://murphy-db.herokuapp.com/api/meals", {
+            content: "Dinner",
+            completed: 50
+        });
+        GetFood();
+    };
 
-const handleMore = async () => {
-    setSelected();
-    setCompleted();
-    var resp = await axios.patch(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`, {
-        completed: complete + 25
-    });
-    GetFood();
+    const handleMore = async () => {
+     
+        var resp = await axios.patch(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`, {
+            completed: complete + 25
+        });
+        setCompleted(complete + 25);
+        GetFood();
         // setFood();
-    // console.log(resp)
-}
-
-const handleLess = async () => {
-    var resp = await axios.patch(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`, {
-        completed: complete - 25
-    });
-    GetFood();
-    // console.log(resp)
-}
-
-const clickDelete = () => {
-    // alert("delete");
-    if (selectedId === null) {
-        return false;
+        // console.log(resp)
     }
-    // console.log(selectedId, "function id")
-    var resp = axios.delete(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`)
-    GetFood();
-}
+
+    const handleLess = async () => {
+        var resp = await axios.patch(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`, {
+            completed: complete - 25
+        });
+        GetFood();
+        setCompleted(complete - 25);
+        // console.log(resp)
+    }
+
+    const clickDelete = () => {
+        // alert("delete");
+        if (selectedId === null) {
+            return false;
+        }
+        // console.log(selectedId, "function id")
+        var resp = axios.delete(`https://murphy-db.herokuapp.com/api/meals/${selectedId}`)
+        GetFood();
+    }
 
 
-return <Container>
-    <div className="title" onClick={filterByDate}>Feeding Schedule</div>
-    {/* {currentDate} */}
-    <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
-    <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
-    <div className="food">
-        {food.map(o => {
-            return <Indicator handleDelete={clickDelete} onClick={() => {
-                setSelected(o.id);
-                setCompleted(o.completed);
-            }} clickLess={handleLess} clickMore={handleMore}
-                mealname={o.content} perc={o.completed}>
-            </Indicator>
-        })}
-    </div>
-    <div className="addComp">
-        <AddItem handleAdd={AddMeal} />
-    </div>
+    // Treats Functions
 
-</Container>
+    const GetTreats = async () => { 
+        var resp = await axios.get("https://murphytreatdb.herokuapp.com/api/treats");
+        console.log("treats database", resp.data.treats)
+        setSnacks(resp.data.treats)
+    }
+
+    const treatsMore = async () => {
+        // setSelectedTreats();
+
+        var resp = await axios.patch(`https://murphytreatdb.herokuapp.com/api/treats/${selectedTreats}`, {
+            amount: amount + 1
+        });
+        setAmount(amount +1);
+        GetTreats();
+    }
+
+    const treatsLess = async () => {
+      
+        var resp = await axios.patch(`https://murphytreatdb.herokuapp.com/api/treats/${selectedTreats}`, {
+            amount: amount - 1
+        });
+        setAmount(amount -1);
+        GetTreats();
+    }
+
+
+    return <Container>
+        <div className="title" onClick={filterByDate}>Feeding Schedule</div>
+        {/* {currentDate} */}
+        <div className="dateComp"><DateComp handleBack={dateBack} handleForward={dateForward} /></div>
+        <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
+        <div className="food">
+            {food.map(o => {
+                return <Indicator className="highlight" handleDelete={clickDelete} onClick={() => {
+                    setSelected(o.id);
+                    setCompleted(o.completed);
+                }} clickLess={handleLess} clickMore={handleMore}
+                    mealname={o.content} perc={o.completed}>
+                </Indicator>
+            })}
+            {snacks.map(o => {
+                return <TreatIndicator className="highlight" onClick={() => {
+                    setSelectedTreats(o.id);
+                    setAmount(o.amount);
+                }}
+                 clickTreatsLess={treatsLess} clickTreatsMore={treatsMore}
+                    amount={o.amount}>
+                </TreatIndicator>
+            })}
+        </div>
+        <div className="addComp">
+            <AddItem handleAdd={AddMeal} />
+        </div>
+
+    </Container>
 }
 
 

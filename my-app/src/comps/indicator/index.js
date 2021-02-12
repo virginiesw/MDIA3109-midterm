@@ -212,7 +212,7 @@ const Indicator = ({onClick, mealname, handleDelete, clickLess, clickMore, perc,
 
 
     return <div onClick={() =>
-        onClick(id, completed)} className="container">{id} - {completed}
+        onClick(id, completed)} className="container">{id}  {completed}
         <img className="closeimg"
             onClick={() => handleDelete()}
             src={close}></img>
