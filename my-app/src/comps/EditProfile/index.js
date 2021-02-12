@@ -148,7 +148,7 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
 
             <Done onClick={() => {
                 DoneClick(); submitClick(name, weight, year, month);
-            }}>Done
+            }}>Save
             </Done>
         </TopBar>
         {/* <Avatar>
