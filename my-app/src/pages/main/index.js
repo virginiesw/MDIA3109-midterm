@@ -59,12 +59,16 @@ font-family: 'Roboto', sans-serif;
 }
 `;
 
-// Trying to add an outline to div when clicked
+
+
+// Trying to add an outline to div when clicked but $ is not declared??
 // var addclass = 'color';
 // var $cols = $('.highlight').click(function(e) {
 //     $cols.removeClass(addclass);
 //     $(this).addClass(addclass);
 // });
+
+
 
 const MainPage = () => {
 
