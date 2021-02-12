@@ -5,7 +5,6 @@ import addTreat from '../../img/add.png';
 import deleteTreat from '../../img/delete.png';
 
 const Container = styled.div`
-border: 1px solid black;
 min-height: 50px;
 max-height: 150px;
 position: relative;
@@ -58,51 +57,83 @@ align-items: center;
 justify-content: center;
 `;
 
+const TreatIndicator = ({amount, clickTreatsLess, clickTreatsMore, id, a, onClick}) => {
+  return <Container  onClick={() =>
+    onClick(id, a)}> {id}  {a}
+         <HeaderCont>
+           <DeleteButton src={deleteTreat} onClick={clickTreatsLess} width="30px" height="30px"></DeleteButton>
+           <h2>Treats</h2>
+           <AddButton src={addTreat} onClick={clickTreatsMore} width="30px" height="30px"></AddButton>
+         </HeaderCont>
+         <TreatCont>
+           <BigCont>
+           <TreatIcono src={treat} width="150px"></TreatIcono>
+           </BigCont>
+           <div>
+             <CounterIcon>
+               {amount}
+             </CounterIcon>
+           </div>
+  
+        </TreatCont>
+      </Container>
+}
 
-class TreatIndicator extends Component {
-  state = {
-    count: 0
-  };
-  handleAdd = () => {
-    console.log(this.state.count)
-    this.setState((prevState, { count }) => ({
-      count: prevState.count + 1
-    }));
+// class TreatIndicator extends Component {
+//   state = {
+//     count: 0
+//   };
+//   clickTreatsMore = () => {
+//     console.log(this.state.count)
+//     this.setState((prevState, { count }) => ({
+//       count: prevState.count + 1
+//     }));
 
-  };
-  handleDelete = () => {
-    console.log(this.state.count)
-    if (this.state.count >= 1) {
-      this.setState((prevState, { count }) => ({
-        count: prevState.count - 1
-      }));
-    }
-    else {
-      (this.state.count = 0)
-    }
-  };
-  render() {
-    return <Container>
-      <HeaderCont>
-        <DeleteButton src={deleteTreat} onClick={this.handleDelete} width="30px" height="30px"></DeleteButton>
-        <h2>Treats</h2>
-        <AddButton src={addTreat} onClick={this.handleAdd} width="30px" height="30px"></AddButton>
-      </HeaderCont>
-      <TreatCont>
-        <BigCont>
-          <TreatIcono src={treat} width="150px"></TreatIcono>
-        </BigCont>
-        <div>
-          <CounterIcon>
-            {this.state.count}
-          </CounterIcon>
-        </div>
+//   };
+//   clickTreatsLess = () => {
+//     console.log(this.state.count)
+//     if (this.state.count >= 1) {
+//       this.setState((prevState, { count }) => ({
+//         count: prevState.count - 1
+//       }));
+//     }
+//     else {
+//       (this.state.count = 0)
+//     }
+//   };
+//   render() {
 
-      </TreatCont>
-    </Container>
+//     const {clickTreatsLess, clickTreatsMore, amount} = this.props;
+
+//     return <Container>
+//       <HeaderCont>
+//         <DeleteButton src={deleteTreat} onClick={() => {clickTreatsLess(amount)}} width="30px" height="30px"></DeleteButton>
+//         <h2>Treats</h2>
+//         <AddButton src={addTreat} onClick={() => {clickTreatsMore(amount)}} width="30px" height="30px"></AddButton>
+//       </HeaderCont>
+//       <TreatCont>
+//         <BigCont>
+//           <TreatIcono src={treat} width="150px"></TreatIcono>
+//         </BigCont>
+//         <div>
+//           <CounterIcon>
+//             {this.state.amount}
+//           </CounterIcon>
+//         </div>
+
+//       </TreatCont>
+//     </Container>
 
 
-  }
+//   }
+// }
+
+TreatIndicator.defaultProps = {
+  amount: 0,
+  clickTreatsLess: ()=>{},
+  clickTreatsMore: ()=>{},
+  id: null,
+  a: null,
 }
 
 export default TreatIndicator;
