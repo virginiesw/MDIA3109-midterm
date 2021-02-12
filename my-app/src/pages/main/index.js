@@ -259,31 +259,6 @@ const MainPage = () => {
         GetTreats();
     }
 
-
-
-return <Container>
-    <div className="title" onClick={filterByDate}>Feeding Schedule</div>
-    {/* {currentDate} */}
-    <div className="dateComp"> <DateComp handleBack={dateBack} handleForward={dateForward} /></div>
-    <div className="filterComp"><FilterComp filterbyMost={filterMost} filterbyLeast={filterLeast} fsizeT="20px" /></div>
-    <div className="food">
-        
-        {food.map(o => {
-            return <Indicator handleDelete={clickDelete} onClick={() => {
-                setSelected(o.id);
-                setFood(o.date);
-                setCompleted(o.completed);
-            }} clickLess={handleLess} clickMore={handleMore}
-                mealname={o.content} perc={o.completed}>
-            </Indicator>
-        })}
-    </div>
-    <div className="addComp">
-        <AddItem handleAdd={AddMeal} />
-    </div>
-
-</Container>
-
     return <Container>
         <div className="title" onClick={filterByDate}>Feeding Schedule</div>
         {/* {currentDate} */}
