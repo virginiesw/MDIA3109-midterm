@@ -124,11 +124,10 @@ margin-left: -30px;
 //     }   
 // }
 
-const AddItem = ({ handleAdd }) => {
+const AddItem = ({ handleAdd, handleDinner, handleBreakfast, handleLunch }) => {
 
 
     const [open, setOpen] = useState(true);
-    const [mealname, setMealname] = useState("");
 
 
     return <Container>
@@ -145,28 +144,21 @@ const AddItem = ({ handleAdd }) => {
 
                     </CloseIcon>
                     <div onClick={() => {
-                        handleAdd(mealname)
+                        handleAdd(); handleBreakfast();
                     }}>
                         <MenuText>Breakfast</MenuText>
                     </div>
                     <TextLine></TextLine>
                     <div onClick={() => {
-                        handleAdd(mealname)
+                        handleAdd(); handleLunch();
                     }}>
                         <MenuText >Lunch</MenuText>
                     </div>
                     <TextLine></TextLine>
                     <div onClick={() => {
-                        handleAdd(mealname)
+                        handleAdd(); handleDinner();
                     }}>
                         <MenuText>Dinner</MenuText>
-                    </div>
-                    <TextLine></TextLine>
-                    <div onClick={() => {
-                        handleAdd(mealname)
-                    }}>
-                        <MenuText>Treat</MenuText>
-
                     </div>
                 </AddMenu>
             </IconCont>
@@ -179,6 +171,10 @@ const AddItem = ({ handleAdd }) => {
 
 AddItem.defaultProps = {
     handleAdd: ()=>{},
+    handleDinner: ()=>{},
+    handleLunch: ()=>{},
+    handleBreakfast: ()=>{},
+    mealname: null,
     // handleAddL: () => { },
     // handleAddD: () => { },
     // handleAddS: () => { },

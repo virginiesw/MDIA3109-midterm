@@ -162,6 +162,7 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
             <Done onClick={() => {
                 DoneClick(); submitClick(name, weight, year, month, avatar);
             }}>Done
+
             </Done>
         </TopBar>
         {/* <Avatar>
@@ -174,7 +175,11 @@ const EditProfile = ({ EditClick, homeClick, DoneClick, submitClick }) => {
 
                 {/* <Edit src={editicon} onClick={EditClick}></Edit> */}
             {/* </div> */}
+
+        {/* </Avatar> */} */}
+
         {/* // <Avatar /> */} 
+
         {/* <ImgCont>
             <Img src="https://i.pinimg.com/564x/54/82/bd/5482bdf0170c7016387b43eccac50f82.jpg"></Img>
         </ImgCont> */}
