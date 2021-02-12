@@ -80,7 +80,7 @@ const MainPage = () => {
     const [sortFoodLeast, setSortFoodLeast] = useState(true); //for filter food by least complete
     const [sortFoodMost, setSortFoodMost] = useState(true); //for filtering food by most complete
     const [sorted, setSorted] = useState(true);
-
+    const [mealname, setMealName] = useState("");
     const [selectedId, setSelected] = useState(null)
     const [selectedTreats, setSelectedTreats] = useState(null)
     const [currentDate, setCurrentDate] = useState(moment().format("DD/MM/YYYY")); //for filtering by date
@@ -197,13 +197,35 @@ const MainPage = () => {
 
     const AddMeal = async () => {
         // console.log("mealname", mealname)
-
+        MealNameB();
+        MealNameL();
+        MealNameD();
         var resp = await axios.post("https://murphy-db.herokuapp.com/api/meals", {
-            content: "Dinner",
+            content: mealname,
             completed: 50
         });
+      
         GetFood();
+        console.log(mealname);
     };
+
+    const MealNameB = () => {
+        setMealName(
+            "Breakfast"
+        )
+    }
+
+    const MealNameL = () => {
+        setMealName(
+            "Lunch"
+        )
+    }
+
+    const MealNameD = () => {
+        setMealName(
+            "Dinner"
+        )
+    }
 
     const handleMore = async () => {
      
@@ -248,7 +270,7 @@ const MainPage = () => {
         // setSelectedTreats();
 
         var resp = await axios.patch(`https://murphytreatdb.herokuapp.com/api/treats/${selectedTreats}`, {
-            amount: +1
+            amount: amount +1
         });
         setAmount(amount +1);
         GetTreats();
@@ -259,7 +281,7 @@ const MainPage = () => {
     const treatsLess = async () => {
       
         var resp = await axios.patch(`https://murphytreatdb.herokuapp.com/api/treats/${selectedTreats}`, {
-            amount: -1
+            amount: amount -1
         });
         setAmount(amount -1);
         GetTreats();
@@ -290,7 +312,11 @@ const MainPage = () => {
             })}
         </div>
         <div className="addComp">
-            <AddItem handleAdd={AddMeal} />
+            <AddItem 
+            handleBreakfast={MealNameB}
+           handleLunch={MealNameL}
+           handleDinner={MealNameD}
+            handleAdd={AddMeal} />
         </div>
 
     </Container>
