@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import React, {useState, useEffect} from 'react';
 import Profile from '../../comps/Profile';
 import ProfileEditPage from '../profile';
+import ProfilePicChanger from '../../comps/ProfilePicChanger';
 
 const Container = styled.div`
 display: flex;

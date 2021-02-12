@@ -10,12 +10,20 @@ const LArrow = styled.div`
 cursor: pointer;
 transform: scale(1.5);
 margin-top: -2px;
+
+:hover {
+  filter: drop-shadow(0px 0px 1px #999999);
+}
 `;
 
 const RArrow = styled.div`
 cursor: pointer;
 transform: scale(1.5);
 margin-top: -2px;
+
+:hover {
+  filter: drop-shadow(0px 0px 1px #999999);
+}
 `;
 
 const Date = styled.div`

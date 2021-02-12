@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import 'antd/dist/antd.css';
 import { Avatar } from 'antd';
 // import { Button } from 'antd';
-import close from '../../img/close.png';
+// import close from '../../img/close.png';
 import './ppchanger.css'
 // import './App.scss';
-import image from '../../img/add.png';
+// import image from '../../img/add.png';
 import styled from 'styled-components';
 import edit from '../../img/edit.png';
 // import img from '../../img/dogpic1.jpg';
 // import img from '../../img/dogpic1.jpg';
-import { SELECTION_NONE } from 'antd/lib/table/hooks/useSelection';
+// import { SELECTION_NONE } from 'antd/lib/table/hooks/useSelection';
 
 const Image = styled.img`
-
 `;
 const Modal = styled.div`
 display: flex;
@@ -24,8 +23,6 @@ background-color: #DAD;
 position: absolute;
 top: 150px;
 left: -90px;
-
-
 `;
 
 // const CloseIcon = styled.img`
