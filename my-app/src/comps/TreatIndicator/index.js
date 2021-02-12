@@ -20,10 +20,18 @@ padding: 5px;
 
 const AddButton = styled.img`
 cursor: pointer;
+
+  :hover {
+    filter: drop-shadow(0px 0px 5px #ff9e44);
+  }
 `;
 
 const DeleteButton = styled.img`
 cursor: pointer;
+
+  :hover {
+    filter: drop-shadow(1px 1px 5px #ff7c03);
+  }
 `;
 
 const HeaderCont = styled.div`
